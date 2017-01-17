@@ -1,0 +1,15 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var API_ROOT = 'http://localhost';
+
+var COMMON_API = {
+  test_api: API_ROOT + 'test/1'
+};
+
+exports.default = {
+  COMMON_API: COMMON_API
+};

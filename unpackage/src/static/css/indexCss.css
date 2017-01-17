@@ -1,0 +1,67 @@
+.mui-input-group label {
+	padding: 16px 20px;
+	font-family: 华文细黑;
+}
+.mui-input-group .mui-input-row:after {
+	left: 20px;
+	right: 20px;
+}
+.mui-input-group:before {
+	height:0px;
+}
+.mui-input-group:after {
+	left: 20px;
+	right: 20px;
+}
+.mui-content {
+	background-color: #ffffff;
+}
+.mui-input-group .mui-input-row {
+	height:49px;
+}
+.mui-content-padded {
+    margin: 20px 20px 0 20px !important;
+}
+.mui-input-group {
+    margin-top: 32px;
+}
+.mui-input ::-webkit-input-placeholder {
+    font-family: 华文细黑;
+    font-size: 15px;
+    line-height: 12px;
+    color: #999999;
+}
+
+.mui-input :-moz-placeholder {
+    font-family: 华文细黑;
+    font-size: 15px;
+    line-height: 12px;
+    color: #999999;
+}
+
+.mui-input :-ms-input-placeholder {
+    font-family: 华文细黑;
+    font-size: 15px;
+    line-height: 12px;
+    color: #999999;
+}
+.mui-input {
+    padding: 0px;
+    font-family: 华文细黑;
+    font-size: 15px;
+    color: #222222;
+    border: none;
+    background: #fff;
+}
+.mui-btn {
+    padding:7px 0;
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var mysubstr = exports.mysubstr = function mysubstr(value, num) {
+    if (!value) {
+        return '';
+    }
+    if (value.length > num) {
+        return value.substr(0, num);
+    } else {
+        return value;
+    }
+};
+
+var imageSizeFilter = exports.imageSizeFilter = function imageSizeFilter() {
+    var value = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
+    var size = arguments.length <= 1 || arguments[1] === undefined ? 100 : arguments[1];
+
+    var reg = /_\d{0,3}.(png|jpe?g|gif|svg)$/;
+    if (value.indexOf('http:') === 0 && !reg.test(value)) {
+        var suffix = value.substring(value.lastIndexOf('.'));
+        return value + '_' + size * 2 + suffix;
+    }
+    return value;
+};
+
+var imageSizeFilter4Home = exports.imageSizeFilter4Home = function imageSizeFilter4Home() {
+    var value = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
+    var size = arguments.length <= 1 || arguments[1] === undefined ? 360 : arguments[1];
+
+    var reg = /_\d{0,3}.(png|jpe?g|gif|svg)$/;
+    if (value.indexOf('http:') === 0 && !reg.test(value)) {
+        var suffix = value.substring(value.lastIndexOf('.'));
+        return value + '_' + size + suffix;
+    }
+    return value;
+};

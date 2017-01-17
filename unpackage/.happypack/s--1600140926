@@ -1,0 +1,170 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _getIterator2 = require('babel-runtime/core-js/get-iterator');
+
+var _getIterator3 = _interopRequireDefault(_getIterator2);
+
+var _stringify = require('babel-runtime/core-js/json/stringify');
+
+var _stringify2 = _interopRequireDefault(_stringify);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _goodsBody = '\n    <div class="product-detail-content">\n        <ul class="mui-table-view mui-grid-view">\n            <li class="mui-table-view-cell mui-media mui-col-xs-12">\n                <a href="#">\n                    <img class="mui-media-object" src="image.url">\n                    <div class="mui-media-body">image.title</div>\n                </a>\n            </li>\n        </ul>\n    </div>\n';
+
+var ks = [{
+    k: 'zhutuLen',
+    v: '商品主图'
+}, {
+    k: 'category',
+    v: '商品分类'
+}, {
+    k: 'goodsName',
+    v: '商品名称'
+}, {
+    k: 'goodsUnit',
+    v: '计量单位'
+}, {
+    k: 'goodsStock',
+    v: '商品库存'
+}, {
+    k: 'item[start]',
+    v: '起批量'
+}, {
+    k: 'item[price]',
+    v: '价格'
+}, {
+    k: 'explanation',
+    v: '产品简介'
+}, {
+    k: 'chanpinLen',
+    v: '产品信息图'
+}, {
+    k: 'baozhuangLen',
+    v: '产品包装图'
+}, {
+    k: 'shiptemplatesel',
+    v: '运费模板'
+}, {
+    k: 'shipnum',
+    v: '固定运费'
+}];
+
+var vs = [{
+    k: 'empty',
+    v: '不能为空!'
+}, {
+    k: 'number',
+    v: '必须是大于0的数字!'
+}, {
+    k: 'qipival',
+    v: '需要大于上一档!'
+}, {
+    k: 'minlength',
+    v: '最少3个字符!'
+}, {
+    k: 'maxlength',
+    v: '字符长度超限!'
+}, {
+    k: 'radioval',
+    v: '配置不正确!'
+}, {
+    k: 'picLen',
+    v: '至少一张!'
+}, {
+    k: 'numberZ',
+    v: '最多8位整数!'
+}, {
+    k: 'zhennumval',
+    v: '只能输入中英文字符!'
+}, {
+    k: 'zhennumval1',
+    v: '只能输入中英文字符!'
+}];
+
+var goodsBody = function goodsBody(data, title) {
+    var goodsBody = '';
+    data.map(function (item, index) {
+        goodsBody += _goodsBody.replace('image.url', item).replace('image.title', title + index);
+    });
+    return goodsBody;
+};
+
+var getShipType = function getShipType(v) {
+    var shippingType = 2;
+    switch (v) {
+        case 'ship_template':
+            shippingType = 1;
+            break;
+        case 'ship_seller':
+            shippingType = 3;
+            break;
+        default:
+            ;
+    }
+    return shippingType;
+};
+
+var getGoodsMpriceJson = function getGoodsMpriceJson(data) {
+    var jsonStr = [];
+    data.reverse().map(function (item, index) {
+        var temp = [];
+        temp.push(parseFloat(item.start));
+        temp.push(index === 0 ? 0 : parseFloat(data[index === 0 ? 0 : index - 1].start) - 1);
+        temp.push(parseFloat(item.price));
+        jsonStr.push(temp);
+    });
+    return (0, _stringify2.default)(jsonStr.reverse());
+};
+
+var errMsg = function errMsg(data) {
+    var msg = '阶梯价设置不正确!';
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+        for (var _iterator = (0, _getIterator3.default)(ks), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var item = _step.value;
+
+            if ((data[item.k] || {}).valid === false) {
+                msg = getMsg(item.v, data[item.k]);
+                break;
+            }
+        }
+    } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+                _iterator.return();
+            }
+        } finally {
+            if (_didIteratorError) {
+                throw _iteratorError;
+            }
+        }
+    }
+
+    return msg;
+};
+
+var getMsg = function getMsg(title, item) {
+    return title + (vs.filter(function (i) {
+        return item[i.k];
+    })[0] || {
+        v: ''
+    }).v;
+};
+
+exports.default = {
+    goodsBody: goodsBody,
+    getShipType: getShipType,
+    getGoodsMpriceJson: getGoodsMpriceJson,
+    errMsg: errMsg
+};

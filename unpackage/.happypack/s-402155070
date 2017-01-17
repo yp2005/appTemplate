@@ -1,0 +1,167 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _stringify = require('babel-runtime/core-js/json/stringify');
+
+var _stringify2 = _interopRequireDefault(_stringify);
+
+var _muiUtils = require('./muiUtils');
+
+var _muiUtils2 = _interopRequireDefault(_muiUtils);
+
+var _api = require('api');
+
+var _api2 = _interopRequireDefault(_api);
+
+var _consts = require('common/consts');
+
+var _consts2 = _interopRequireDefault(_consts);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var setContractPrice = function setContractPrice(id, sn, type, callback, unpayamount, pay_state) {
+    var btnArray = ['取消', '提交'];
+    var alertTitle = '';
+    var alertInfo = '';
+    var typeNum = 3;
+    if (type === 'discount') {
+        alertTitle = '设置优惠';
+        alertInfo = '请输入优惠金额';
+        typeNum = 4;
+    } else if (type === 'relief') {
+        alertTitle = '设置减免';
+        alertInfo = '请输入减免金额';
+        typeNum = 3;
+    }
+    mui.prompt(alertInfo, '0.00', alertTitle, btnArray, function (e) {
+        if (e.index === 1) {
+            if (!isNaN(e.value)) {
+                var money = Number(e.value);
+                if (money <= 0) {
+                    mui.toast('金额必须大于0元');
+                } else if (money > unpayamount) {
+                    mui.toast('金额必须小于未付金额');
+                } else {
+                    var params = {
+                        store_id: _muiUtils2.default.getLoginUserInfo().store_id,
+                        type: typeNum,
+                        member_id: _muiUtils2.default.getLoginUserInfo().user_id,
+                        contract: {
+                            order_id: id,
+                            order_sn: sn,
+                            amount: e.value,
+                            pay_state: pay_state
+                        }
+                    };
+                    var api_url = _api2.default.CONTRACT_API.contract_relief_discount;
+                    _muiUtils2.default.muiAjax(api_url, {
+                        type: 'post',
+                        data: (0, _stringify2.default)(params),
+                        contentType: 'application/json',
+                        dataType: 'json',
+                        success: function success(data) {
+                            if (data.header.code === _consts2.default.ERROR_CODE.SUCCESS) {
+                                mui.toast(alertTitle + '成功');
+                            } else {
+                                mui.toast(data.msg);
+                            }
+                            if (callback) {
+                                callback(data.header.code);
+                            }
+                        },
+                        error: function error(xhr, type, errorThrown) {
+                            mui.toast('提交合同失败，稍后重试！');
+                        }
+                    });
+                }
+            } else {
+                mui.toast('请输入数字');
+            }
+        } else {}
+    }, 'div');
+    document.querySelector('.mui-popup-input input').type = 'number';
+};
+
+var lookContractLogistics = function lookContractLogistics(contractInfo) {
+    _muiUtils2.default.openWindow('../../commonpage/contract/logistics.html', 'commonpage_contract_logistics.html', {
+        extras: {
+            'contractInfo': contractInfo
+        }
+    });
+};
+
+var evaluateContract = function evaluateContract(contractInfo) {
+    _muiUtils2.default.openWindow('../../buyer/contract/contractevaluate.html', 'buyer_contract_contractevaluate.html', {
+        extras: {
+            'contractInfo': contractInfo
+        }
+    });
+};
+
+var payContract = function payContract(contractInfo) {
+    var contract_ids = [contractInfo.contract_id];
+    _muiUtils2.default.openWindow('../../buyer/contract/selectpaytype.html', 'buyer_contract_selectpaytype.html', {
+        extras: {
+            payInfo: {
+                'contract_id': contract_ids,
+                'sum_amount': Number(contractInfo.unpay_amount).toFixed(2)
+            }
+        },
+        styles: {
+            popGesture: 'none'
+        }
+    });
+};
+
+var cancelContract = function cancelContract(contractInfo, callback) {
+    var btnArray = ['取消', '确定'];
+    mui.confirm('订单编号：' + contractInfo.contract_id, '您是否要取消订单', btnArray, function (e) {
+        if (e.index == 1) {
+            var params = {
+                store_id: '',
+                contract_id: contractInfo.contract_id,
+                member_id: _muiUtils2.default.getLoginUserInfo().user_id
+            };
+            var api_url = _api2.default.CONTRACT_API.contract_cancel;
+            _muiUtils2.default.muiAjax(api_url, {
+                type: 'post',
+                data: (0, _stringify2.default)(params),
+                contentType: 'application/json',
+                dataType: 'json',
+                success: function success(data) {
+                    if (data.header.code === _consts2.default.ERROR_CODE.SUCCESS) {
+                        mui.toast('合同取消成功');
+                    } else {
+                        mui.toast(data.msg);
+                    }
+                    if (callback) {
+                        callback(data.header.code);
+                    }
+                },
+                error: function error(xhr, type, errorThrown) {
+                    mui.toast('提交合同失败，稍后重试！');
+                }
+            });
+        }
+    });
+};
+
+var deliverContract = function deliverContract(contractInfo) {
+    _muiUtils2.default.openWindow('../../seller/contract/contractdeliver.html', 'seller_contract_contractdeliver.html', {
+        extras: {
+            'contractInfo': contractInfo
+        }
+    });
+};
+
+exports.default = {
+    setContractPrice: setContractPrice,
+    lookContractLogistics: lookContractLogistics,
+    evaluateContract: evaluateContract,
+    payContract: payContract,
+    cancelContract: cancelContract,
+    deliverContract: deliverContract
+};

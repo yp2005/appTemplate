@@ -1,0 +1,36 @@
+
+@font-face {
+    font-family: jxddaddMuiicons;
+    font-weight: normal;
+    font-style: normal;
+
+    src: url('../fonts/jxddadd.ttf') format('truetype');
+}
+    
+.jxddaddicon{
+    font-family:jxddaddMuiicons !important;
+    vertical-align: middle;
+}
+
+.jxddaddiconfont {
+  font-family:jxddaddMuiicons !important;
+    font-size: 24px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+
+    display: inline-block;
+
+    text-decoration: none;
+
+    -webkit-font-smoothing: antialiased;
+}
+.icon-tishi64:before { content: "\e600"; }
+.icon-meiyoushuju240px:before { content: "\e601"; }
+.icon-jianshaoxianxing32:before { content: "\e602"; }
+.icon-jianshao32:before { content: "\e603"; }
+.icon-tianjiaxianxing32:before { content: "\e604"; }
+.icon-404cuowu:before { content: "\e605"; }
+.icon-wodegongying:before { content: "\e606"; }
+.icon-shequ:before { content: "\e607"; }
+.icon-qiugoudating:before { content: "\e608"; }

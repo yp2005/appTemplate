@@ -1,0 +1,39 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var format = function format(value) {
+    return value >= 10 ? value : '0' + value;
+};
+var dateFilter = exports.dateFilter = function dateFilter(time, type) {
+    var date = new Date(time);
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var second = date.getSeconds();
+    var result = void 0;
+    switch (type) {
+        case 0:
+            result = format(month) + '-' + format(day);
+            break;
+        case 1:
+            result = format(hours) + '-' + format(minutes);
+            break;
+        case 2:
+            result = year + '-' + format(month) + '-' + format(day);
+            break;
+        case 3:
+            result = year + '-' + format(month) + '-' + format(day) + ' ' + format(hours) + ':' + format(minutes);
+            break;
+        case 4:
+            result = year + '-' + format(month) + '-' + format(day) + ' ' + format(hours) + ':' + format(minutes) + ':' + format(second);
+            break;
+        default:
+            result = year + '-' + format(month) + '-' + format(day) + ' ' + format(hours) + ':' + format(minutes) + ':' + format(second);
+    }
+    return result;
+};

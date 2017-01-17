@@ -1,0 +1,100 @@
+'use strict';
+
+var _muiUtils = require('common/muiUtils');
+
+var _muiUtils2 = _interopRequireDefault(_muiUtils);
+
+var _vue = require('vue');
+
+var _vue2 = _interopRequireDefault(_vue);
+
+var _vueRouter = require('vue-router');
+
+var _vueRouter2 = _interopRequireDefault(_vueRouter);
+
+var _App = require('./App');
+
+var _App2 = _interopRequireDefault(_App);
+
+var _Header = require('component/mui/Header');
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _consts = require('common/consts');
+
+var _consts2 = _interopRequireDefault(_consts);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_vue2.default.use(_vueRouter2.default);
+var router = new _vueRouter2.default();
+
+var HeaderVue = _vue2.default.extend(_Header2.default);
+var header = new HeaderVue({
+    propsData: {
+        typeclass: 'wantBuy',
+        hdstyle: {
+            back: {
+                display: true
+            },
+            searchBar: {
+                display: true,
+                placeholder: '搜索求购信息',
+                modelName: _consts2.default.PREFIX_BUYINGHALL
+            },
+            rightButton: {
+                display: 'none',
+                text: '我的求购',
+                onClick: function onClick() {
+                    _muiUtils2.default.openWindow('../../buyer/purchase/list.html', 'buyer_purchase_list.html', {
+                        isValidLogin: true
+                    });
+                }
+            }
+        },
+        searchValue: '',
+        value: ''
+    },
+    el: 'vheader',
+    watch: {
+        searchValue: function searchValue() {
+            router.app.searchValue = this.searchValue;
+        }
+    }
+});
+
+mui.init({
+    swipeBack: true
+});
+mui.plusReady(function () {
+    var fromSellerPage = plus.webview.currentWebview().fromSellerPage;
+    var searchValue = plus.webview.currentWebview().searchValue ? plus.webview.currentWebview().searchValue : '';
+    if (fromSellerPage) {
+        header.hdstyle.rightButton.display = 'none';
+        header.typeclass = 'commodity';
+    } else {
+        header.hdstyle.rightButton.display = true;
+        header.typeclass = 'wantBuy';
+    }
+    if (searchValue) {
+        header.searchValue = searchValue;
+        header.value = searchValue;
+    }
+    router.start(_App2.default, '#app');
+});
+
+window.addEventListener(_consts2.default.WEBVIEW_SHOW_EVENT, function (e) {
+    var searchValue = e.detail.searchValue ? e.detail.searchValue : '';
+    if (searchValue) {
+        header.searchValue = searchValue;
+        header.value = searchValue;
+    } else {
+        header.searchValue = '';
+        header.value = '';
+    }
+});
+
+window.addEventListener('backbuyinghall', function (e) {
+    header.searchValue = '';
+    header.value = '';
+});

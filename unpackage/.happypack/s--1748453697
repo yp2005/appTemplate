@@ -1,0 +1,116 @@
+'use strict';
+
+var _vue = require('vue');
+
+var _vue2 = _interopRequireDefault(_vue);
+
+var _vueRouter = require('vue-router');
+
+var _vueRouter2 = _interopRequireDefault(_vueRouter);
+
+var _App = require('./App');
+
+var _App2 = _interopRequireDefault(_App);
+
+var _Header = require('component/mui/Header');
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _muiUtils = require('common/muiUtils');
+
+var _muiUtils2 = _interopRequireDefault(_muiUtils);
+
+var _Home = require('../bizcomponent/Home');
+
+var _Home2 = _interopRequireDefault(_Home);
+
+var _AllGoods = require('../bizcomponent/AllGoods');
+
+var _AllGoods2 = _interopRequireDefault(_AllGoods);
+
+var _ActivityGoods = require('../bizcomponent/ActivityGoods');
+
+var _ActivityGoods2 = _interopRequireDefault(_ActivityGoods);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_vue2.default.use(_vueRouter2.default);
+var router = new _vueRouter2.default();
+
+router.map({
+    '/': {
+        component: _Home2.default
+    },
+    '/home': {
+        component: _Home2.default
+    },
+    '/allgoods': {
+        component: _AllGoods2.default
+    },
+    '/activitygoods': {
+        component: _ActivityGoods2.default
+    }
+});
+
+router.redirect({
+    '*': '/home'
+});
+
+mui.init({
+    swipeBack: true
+});
+
+var HeaderVue = _vue2.default.extend(_Header2.default);
+var header = new HeaderVue({
+    propsData: {
+        hdstyle: {
+            back: {
+                display: true
+            },
+            searchBar: {
+                display: true,
+                placeholder: '搜索店铺内商品',
+                modelName: 'store',
+                gotoPage: '../../buyer/homesearch/index.html',
+                extras: {
+                    store_id: ''
+                }
+            },
+            rightButton: {
+                display: true,
+                text: '首页',
+                onClick: function onClick() {
+                    _muiUtils2.default.openIndexWindow('buyer');
+                }
+            }
+        },
+        typeclass: 'wantBuy',
+        currentSearchType: 'goods'
+    },
+    el: 'vheader'
+});
+
+var FootVue = _vue2.default.extend({});
+var footer = new FootVue({
+    el: '.bottom-button',
+    methods: {
+        displayType: function displayType() {
+            router.app.displayType();
+        },
+        gotoStoreInfo: function gotoStoreInfo() {
+            router.app.gotoStoreInfo();
+        }
+    }
+});
+
+
+mui.plusReady(function () {
+    header.hdstyle.searchBar.extras.store_id = plus.webview.currentWebview().store_id;
+    var fromSeller = plus.webview.currentWebview().fromSeller;
+    if (fromSeller) {
+        header.hdstyle.rightButton.onClick = function () {
+            _muiUtils2.default.openIndexWindow('seller');
+        };
+    }
+    router.start(_App2.default, '#app');
+});

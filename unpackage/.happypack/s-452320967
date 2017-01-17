@@ -1,0 +1,37 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var dataFormat2 = function dataFormat2(data, g) {
+    data = data || [];
+    var temp = {};
+    var result = [];
+    data.map(function (item) {
+        temp = {
+            value: item['g' + g + '_code'],
+            text: item['g' + g + '_name'],
+            children: g === 3 ? {} : dataFormat2(item['g' + (g + 1)], g + 1) || {}
+        };
+        result.push(temp);
+    });
+    return result;
+};
+var dataFormat = function dataFormat(data) {
+    var temp = {};
+    var result = [];
+    data = data || [];
+    data.sort().map(function (item) {
+        temp = {
+            value: item.g1_code,
+            text: item.g1_name,
+            children: dataFormat2(item.g2, 2) || {}
+        };
+        result.push(temp);
+    });
+    return result;
+};
+
+exports.default = {
+    dataFormat: dataFormat
+};

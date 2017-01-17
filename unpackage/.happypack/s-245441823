@@ -1,0 +1,123 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _stringify = require('babel-runtime/core-js/json/stringify');
+
+var _stringify2 = _interopRequireDefault(_stringify);
+
+var _muiUtils = require('./muiUtils');
+
+var _muiUtils2 = _interopRequireDefault(_muiUtils);
+
+var _api = require('api');
+
+var _api2 = _interopRequireDefault(_api);
+
+var _consts = require('common/consts');
+
+var _consts2 = _interopRequireDefault(_consts);
+
+var _utils = require('common/utils');
+
+var _utils2 = _interopRequireDefault(_utils);
+
+var _cacheUtils = require('common/cacheUtils');
+
+var _cacheUtils2 = _interopRequireDefault(_cacheUtils);
+
+var _logUtils = require('common/logUtils');
+
+var _logUtils2 = _interopRequireDefault(_logUtils);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var timeout;
+var listeningTimeout;
+
+var count = 1;
+
+var heartListening = 0;
+
+var heartFailCount = 0;
+
+var defineTime = 5000;
+var time = defineTime;
+var listeningTime = defineTime;
+
+var initHeart = function initHeart(socket) {
+    count = 1;
+    heartFailCount = 0;
+    heartBack(socket);
+    heart(socket);
+};
+var heart = function heart(socket) {
+    if (_muiUtils2.default.getNetworkType() === 1) {
+        setConnectStatus(3);
+        clearTimeout(listeningTimeout);
+        clearTimeout(timeout);
+        return;
+    }
+
+    var connect = getConnectStatus();
+
+    if (connect === 2) {
+        _logUtils2.default.log('通信连接建立失败，需要手动刷新连接！');
+        clearTimeout(listeningTimeout);
+        clearTimeout(timeout);
+        return;
+    }
+
+    heartListening = 0;
+    socket.emit('onHeartBeat', (0, _stringify2.default)({
+        status: 0
+    }));
+
+    time = count * defineTime;
+    if (count > 1) {
+        listeningTime = (count - 1) * 1000;
+    } else {
+        listeningTime = defineTime;
+    }
+    if (time > 60000) {
+        time = 60000;
+    }
+    count += 1;
+    _logUtils2.default.log('heart time:' + time);
+
+    listeningTimeout = setTimeout(function () {
+        if (heartListening === 0) {
+            heartFailCount = heartFailCount + 1;
+            count = 1;
+            _logUtils2.default.log('heard listening fail count: ' + heartFailCount);
+            if (heartFailCount >= 5) {
+                setConnectStatus(2);
+            }
+        }
+    }, listeningTime);
+
+    timeout = setTimeout(function () {
+        heart(socket);
+    }, time);
+};
+
+var heartBack = function heartBack(socket) {
+    socket.on('onHeartBeat', function (data) {
+        heartListening = data.status;
+    });
+};
+
+var getConnectStatus = function getConnectStatus() {
+    return _cacheUtils2.default.localStorage(_consts2.default.IMCHAT_PURCHASE).getObject(_consts2.default.IMCHAT_CONNECT_STATUS);
+};
+var setConnectStatus = function setConnectStatus(status) {
+    _cacheUtils2.default.localStorage(_consts2.default.IMCHAT_PURCHASE).setObject(_consts2.default.IMCHAT_CONNECT_STATUS, status);
+};
+
+exports.default = {
+    initHeart: initHeart,
+    getConnectStatus: getConnectStatus,
+    setConnectStatus: setConnectStatus
+};

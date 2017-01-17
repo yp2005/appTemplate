@@ -1,0 +1,88 @@
+<!DOCTYPE html> <html> <head> <meta charset="utf-8">       <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta name="misapplication-tap-highlight" content="no"/>
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="MobileOptimized" content="320"/>
+        <link rel="stylesheet" type="text/css" href="../../static/css/mui.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../static/css/jxdd.css" />
+	       <link rel="stylesheet" type="text/css" href="../../static/css/jxddadd.css" />
+        <link rel="stylesheet" type="text/css" href="../../static/css/iconfont.css" />
+        <link rel="stylesheet" type="text/css" href="../../static/css/override_mui.css" />
+        <script src="../../vendorMui.dll.js"></script>
+        <script src="../../vendors.dll.js"></script>
+        <script src="../../vendorUtils.dll.js"></script>
+        <script src="../../vendorVue.dll.js"></script>
+        <script src="../../static/js/mui.js"></script>
+ <title>入口页面</title> </head> <body> <script charset="utf-8"> // mui.init();
+        var launchFlag = '';
+        mui.plusReady(function() {
+            launchFlag = plus.storage.getItem('launchFlag');
+            // 判断download目录是否存在
+            var download = '_downloads/';
+            var imgs = window.localStorage.getItem('home_index_imageDatas') || '';
+            plus.io.resolveLocalFileSystemURL(download, function(entry) {
+                if (imgs.indexOf(entry.fullPath) === -1) {
+                    clear();
+                } else {
+                    entry.getMetadata(function(metadata) {
+                        if (entry.isDirectory && metadata.fileCount === 0) {
+                            console.log('no files error:::');
+                            clear();
+                        } else {
+                            main();
+                        }
+                    }, function(e) {
+                        console.log('getMetadata() error:::' + e.message);
+                        clear();
+                    });
+                }                
+            }, function(e) {
+                console.log('resolveLocalFileSystemURL error:::' + e.message);
+                clear();
+            });
+        });
+        function clear() {
+            var SLIDER_IMAGES = 'imageDatas';
+            var ACTIVITY_LIST = 'activityDatas';
+            var POPULAR_LIST = 'popularDatas';
+            var CUSTOMIZATION_LIST = 'customizationDatas';
+            var BRANDS_LIST = 'brandsDatas';
+            var GUESS_LIST = 'guessDatas';
+            window.localStorage.removeItem('home_index_' + SLIDER_IMAGES);
+            window.localStorage.removeItem('home_index_' + ACTIVITY_LIST);
+            window.localStorage.removeItem('home_index_' + POPULAR_LIST);
+            window.localStorage.removeItem('home_index_' + CUSTOMIZATION_LIST);
+            window.localStorage.removeItem('home_index_' + BRANDS_LIST);
+            window.localStorage.removeItem('home_index_' + GUESS_LIST);
+            main();
+        }
+        function main() {
+            if (launchFlag) {
+                mui.openWindow({
+                    url: '../../commonpage/index/main.html',
+                    id: 'main',
+                    waiting: {
+                        autoShow: false // 自动显示等待框，默认为true
+                    }
+                });
+            } else {
+                mui.openWindow({
+                    url: '../../commonpage/index/guide.html',
+                    id: 'guide',
+                    show: {
+                        autoShow: true,
+                        aniShow: 'pop-in',
+                        duration: 300
+                    },
+                    waiting: {
+                        autoShow: false // 自动显示等待框，默认为true
+                    }
+                });
+                mui.preload({
+                    url: '../../commonpage/index/main.html',
+                    id: 'main',
+                    waiting: {
+                        autoShow: false // 自动显示等待框，默认为true
+                    }
+                });
+            }
+        } </script> <script type="text/javascript" src="../../static/js/vendors.js"></script><script type="text/javascript" src="../../static/js/commonpage/index/index.js"></script></body> </html> 

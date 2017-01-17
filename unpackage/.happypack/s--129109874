@@ -1,0 +1,101 @@
+'use strict';
+
+var _vue = require('vue');
+
+var _vue2 = _interopRequireDefault(_vue);
+
+var _vueRouter = require('vue-router');
+
+var _vueRouter2 = _interopRequireDefault(_vueRouter);
+
+var _App = require('./App');
+
+var _App2 = _interopRequireDefault(_App);
+
+var _Header = require('component/mui/Header');
+
+var _Header2 = _interopRequireDefault(_Header);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_vue2.default.use(_vueRouter2.default);
+var router = new _vueRouter2.default();
+
+var HeaderVue = _vue2.default.extend(_Header2.default);
+
+var header = new HeaderVue({
+    propsData: {
+        title: '我的供应信息',
+        hdstyle: {
+            back: {
+                display: true
+            },
+            title: {
+                display: true
+            },
+            rightButton: {
+                display: true,
+                text: '编辑',
+                onClick: function onClick() {
+                    router.app.changeListStatus();
+                }
+            }
+        }
+    },
+    el: 'vheader'
+});
+var FooterVue = _vue2.default.extend({
+    props: {
+        isedit: {
+            type: Boolean,
+            twoWay: true
+        },
+        btnclass: {
+            type: String,
+            twoWay: true
+        },
+        selecttotal: {
+            type: Number,
+            twoWay: true
+        }
+    }
+});
+
+var footer = new FooterVue({
+    propsData: {
+        isedit: false,
+        btnclass: 'mui-btn mui-btn-delete mui-btn-half',
+        selecttotal: 0
+    },
+    methods: {
+        goToSupplierProductList: function goToSupplierProductList() {
+            router.app.goToSupplierProductList();
+        },
+        deleteAllSupplierInfo: function deleteAllSupplierInfo() {
+            router.app.deleteAllSupplierInfo();
+        }
+    },
+    el: '#footer'
+});
+
+mui.init({
+    swipeBack: true,
+    subpages: [{
+        url: 'infolist.html',
+        id: 'seller_supplier_infolist',
+        styles: {
+            top: '90px',
+            bottom: '49px'
+        }
+    }]
+});
+
+mui.plusReady(function () {
+    if (!_App2.default.events) {
+        _App2.default.events = {};
+    }
+    _App2.default.events["readyFun"] = function () {
+        this.header = header, this.footer = footer;
+    };
+    router.start(_App2.default, '#app');
+});

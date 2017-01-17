@@ -1,0 +1,48 @@
+'use strict';
+
+var _vue = require('vue');
+
+var _vue2 = _interopRequireDefault(_vue);
+
+var _vueRouter = require('vue-router');
+
+var _vueRouter2 = _interopRequireDefault(_vueRouter);
+
+var _app = require('./app');
+
+var _app2 = _interopRequireDefault(_app);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_vue2.default.use(_vueRouter2.default);
+var router = new _vueRouter2.default();
+
+var ws = null;
+
+mui.init({
+    swipeBack: false
+});
+
+mui.plusReady(function () {
+    plus.key.addEventListener('backbutton', function () {
+        history.length === 1 && ws.close();
+        var c = setTimeout(function () {
+            ws.close();
+        }, 1000);
+        window.onbeforeunload = function () {
+            clearTimeout(c);
+        };
+        history.go(-2);
+    }, false);
+    ws = plus.webview.currentWebview();
+    _app2.default.ws = ws;
+    router.start(_app2.default, '#app');
+});
+
+document.addEventListener('touchstart', function () {
+    return false;
+}, true);
+
+document.oncontextmenu = function () {
+    return false;
+};

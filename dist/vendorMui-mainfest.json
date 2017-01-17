@@ -1,0 +1,13 @@
+{
+  "name": "vendorMui_library",
+  "content": {
+    "./src/static/js/mui.imageViewer.js": 1,
+    "./src/static/js/mui.indexedlist.js": 2,
+    "./src/static/js/mui.lazyload.img.js": 3,
+    "./src/static/js/mui.lazyload.js": 4,
+    "./src/static/js/mui.pullToRefresh.js": 5,
+    "./src/static/js/mui.pullToRefresh.material.js": 6,
+    "./src/static/js/mui.zoom.js": 7,
+    "./src/static/js/mui.previewimage.js": 8
+  }
+}

@@ -1,0 +1,18 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var USER_INFO = 'user_info';
+
+var ERROR_CODE = {
+  SUCCESS: '10000' };
+
+exports.default = {
+  USER_INFO: USER_INFO,
+  ERROR_CODE: ERROR_CODE
+
+};
+exports.USER_INFO = USER_INFO;
+exports.ERROR_CODE = ERROR_CODE;

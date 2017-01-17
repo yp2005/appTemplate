@@ -1,0 +1,94 @@
+'use strict';
+
+var _vue = require('vue');
+
+var _vue2 = _interopRequireDefault(_vue);
+
+var _vueRouter = require('vue-router');
+
+var _vueRouter2 = _interopRequireDefault(_vueRouter);
+
+var _App = require('./App');
+
+var _App2 = _interopRequireDefault(_App);
+
+var _Header = require('component/mui/Header.vue');
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _muiUtils = require('common/muiUtils');
+
+var _muiUtils2 = _interopRequireDefault(_muiUtils);
+
+var _consts = require('common/consts');
+
+var _consts2 = _interopRequireDefault(_consts);
+
+var _api = require('api');
+
+var _api2 = _interopRequireDefault(_api);
+
+var _NavTabbar = require('component/mui/NavTabbar.vue');
+
+var _NavTabbar2 = _interopRequireDefault(_NavTabbar);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_vue2.default.use(_vueRouter2.default);
+var router = new _vueRouter2.default();
+
+mui.init({
+    swipeBack: false
+});
+
+var HeaderVue = _vue2.default.extend(_Header2.default);
+
+var header = new HeaderVue({
+    propsData: {
+        title: '采购单',
+        hdstyle: {
+            back: {
+                display: true
+            },
+            title: {
+                display: true
+            },
+            rightButton: {
+                display: true,
+                text: '编辑',
+                onClick: function onClick() {
+                    var webview = plus.webview.currentWebview();
+                    if (header.hdstyle.rightButton.text === '编辑') {
+                        header.hdstyle.rightButton.text = '完成';
+                        header.title = '已选择(0)';
+                        mui.fire(webview, 'isedit', {
+                            edit: false
+                        });
+                    } else {
+                        header.hdstyle.rightButton.text = '编辑';
+                        header.title = '采购单';
+                        mui.fire(webview, 'isedit', {
+                            edit: true
+                        });
+                    }
+                } }
+        }
+    },
+    el: 'vheader'
+});
+
+window.addEventListener('toptext', function (event) {
+    header.hdstyle.rightButton.text = event.detail.toptext;
+    header.header.title = event.detail.title;
+});
+
+window.addEventListener('buytype', function (event) {
+    if (header.hdstyle.rightButton.text === '编辑') {
+        header.title = '采购单';
+    } else {
+        header.title = '已选择(' + event.detail.buytype + ')';
+    }
+});
+mui.plusReady(function () {
+    router.start(_App2.default, '#app');
+});

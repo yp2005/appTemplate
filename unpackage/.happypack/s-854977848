@@ -1,0 +1,84 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.request = undefined;
+
+var _vue = require('vue');
+
+var _vue2 = _interopRequireDefault(_vue);
+
+var _vueResource = require('library/vue-resource.js');
+
+var _vueResource2 = _interopRequireDefault(_vueResource);
+
+var _utils = require('common/utils');
+
+var _utils2 = _interopRequireDefault(_utils);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_vue2.default.use(_vueResource2.default);
+
+
+var request = {
+	ajax: function ajax(parameter) {
+		var that = {
+			data: {}
+		};
+		var data = null;
+		var instanceId = '25fde536-4a9c-432c-80df-795ab6cf57ef';
+		if (!parameter.url) {
+			throw "require url";
+		}
+		that.url = parameter.url;
+		that.type = parameter.type ? parameter.type : 'GET';
+		that.data = parameter.data ? parameter.data : null;
+		if (parameter.status) {
+			that.status = parameter.status;
+			that.status.headers.instance_id = instanceId;
+		} else {
+			that.status = {
+				headers: {
+					instance_id: instanceId,
+					access_token: 'V1_8640a4ce7c3f4852803bf50136b9fd31_25fde536-4a9c-432c-80df-795ab6cf57ef_2614_2_2016-08-12T08:58:16+0000'
+				}
+			};
+		}
+		var successFn = function successFn(response) {
+			var data = response.data;
+			var context = parameter.context ? parameter.context : null;
+			if (context) {
+				parameter.success.call(context, data, response);
+			} else {
+				parameter.success(data, response);
+			}
+		};
+		var errorFn = function errorFn(response) {
+			var status = response.status;
+			var statusText = response.statusText;
+			console.log('status===' + status + '  statusText============' + statusText);
+			var context = parameter.context ? parameter.context : null;
+			var errorFnExists = parameter.error ? true : false;
+			if (errorFnExists) {
+				if (context) {
+					parameter.error.call(context, response, status, statusText);
+				} else {
+					parameter.error(data, response, status, statusText);
+				}
+			}
+		};
+		if (that.type.toUpperCase() == 'GET') {
+			_vue2.default.http.get(that.url, that.data, that.status).then(successFn, errorFn);
+		}
+		if (that.type.toUpperCase() == 'POST') {
+			_vue2.default.http.post(that.url, that.data, that.status).then(successFn, errorFn);
+		}
+	}
+};
+
+exports.default = {
+	request: request
+};
+exports.request = request;

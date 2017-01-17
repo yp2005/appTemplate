@@ -1,0 +1,23 @@
+'use strict';
+
+exports.jxddprops = {
+  'site.static.url': 'http://static.jxdd.com/suppliers',
+  'test': 'hello xdd',
+  'site.image.url': 'http://192.168.2.61:8888/zqb/api/facade/test_upload/upload_image'
+};
+
+exports.logprops = {
+  'logonoff': 0,
+
+  'loglevel': 2
+};
+
+exports.urlprops = {
+  'webview.id.blacklist': ['account_login_password', 'account_login_msg', 'account_register', 'account_set_login', 'account_forgot_password', 'account_reset_password', 'buyer_mine_usersetting_edituserdata_modifypassword', 'buyer_mine_usersetting_edituserdata_modifybindingphone'],
+
+  'webview.preload.whiltlist': ['buyer_commonpage_buyinghall_index.html', 'seller_commonpage_buyinghall_index.html', 'main', 'seller_index', 'buyer_supplier_index.html', 'seller_imchat']
+};
+
+exports.UIprops = {
+  open_page_num: 10
+};

@@ -1,0 +1,85 @@
+'use strict';
+
+var _typeof2 = require('babel-runtime/helpers/typeof');
+
+var _typeof3 = _interopRequireDefault(_typeof2);
+
+var _vue = require('vue');
+
+var _vue2 = _interopRequireDefault(_vue);
+
+var _vueRouter = require('vue-router');
+
+var _vueRouter2 = _interopRequireDefault(_vueRouter);
+
+var _App = require('./App');
+
+var _App2 = _interopRequireDefault(_App);
+
+var _Header = require('component/mui/Header');
+
+var _Header2 = _interopRequireDefault(_Header);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_vue2.default.use(_vueRouter2.default);
+var router = new _vueRouter2.default();
+
+var HeaderVue = _vue2.default.extend(_Header2.default);
+router.header = new HeaderVue({
+    el: 'vheader',
+    propsData: {
+        hdstyle: {
+            back: {
+                display: true
+            },
+            title: {
+                display: true
+            },
+            rightSearchBtn: {
+                display: true
+            },
+            searchBar: {
+                display: 'none',
+                placeholder: '搜索公告',
+                modelName: 'SellerBulletin'
+            }
+        },
+        searchValue: ''
+    },
+    watch: {
+        searchValue: function searchValue() {
+            this.hdstyleDef.rightSearchBtn.display = 'none';
+            this.hdstyleDef.searchBar.display = true;
+            this.typeclass = 'commodity';
+            if ((0, _typeof3.default)(router.app) === 'object') {
+                router.app.searchValue = this.searchValue;
+                router.app.getData();
+            }
+        }
+    }
+});
+
+mui.init({
+    swipeBack: true,
+    subpages: [{
+        url: 'offline.html',
+        id: 'bulletin-offline',
+        styles: {
+            top: '45px',
+            bottom: '0px'
+        },
+        show: {
+            autoShow: false,
+            aniShow: 'slide-in-right',
+            duration: 100
+        }
+    }]
+});
+
+mui.plusReady(function () {
+    router.start(_App2.default, '#app');
+    window.addEventListener('bulletin-refresh', function () {
+        router.app.getData();
+    });
+});

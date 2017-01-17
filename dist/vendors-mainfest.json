@@ -1,0 +1,10 @@
+{
+  "name": "vendors_library",
+  "content": {
+    "./node_modules/vue/dist/vue.common.js": 219,
+    "./node_modules/vue-validator/dist/vue-validator.common.js": 220,
+    "./node_modules/vue-router/dist/vue-router.js": 221,
+    "./node_modules/cropper/dist/cropper.js": 222,
+    "./node_modules/jquery/dist/jquery.js": 223
+  }
+}

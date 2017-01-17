@@ -1,0 +1,23 @@
+'use strict';
+
+exports.props = {
+  'site.static.url': 'http://static.jxdd.com/suppliers',
+  'test': 'hello xdd',
+  'site.image.url': 'http://192.168.2.61:8888/zqb/api/facade/test_upload/upload_image'
+};
+
+exports.logprops = {
+  'logonoff': 0,
+
+  'loglevel': 2
+};
+
+exports.urlprops = {
+  'webview.id.blacklist': [],
+
+  'webview.preload.whiltlist': ['main']
+};
+
+exports.UIprops = {
+  open_page_num: 10
+};

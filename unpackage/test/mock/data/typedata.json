@@ -1,0 +1,48 @@
+{
+"header":    {
+      "code": "200000",
+      "msg": "服务调用成功",
+      "timestamp": "2016-06-20T02:45:21Z"
+   },
+"g1":[{
+                "g1_image": "",
+                    "g1_name": "中西餐调料",
+                    "g1_code": 10000,
+                    "description": ""
+                }, {
+                "g1_image": "",
+                    "g1_name": "干果",
+                    "g1_code": 20000,
+                    "description": ""
+                }, {
+                "g1_image": "",
+                    "g1_name": "休闲食品/冲饮",
+                    "g1_code": 30000,
+                    "description": ""
+                }, {
+                "g1_image": "",
+                    "g1_name": "地方特产",
+                    "g1_code": 40000,
+                    "description": ""
+                }, {
+                "g1_image": "",
+                    "g1_name": "粮油/干货",
+                    "g1_code": 50000,
+                    "description": ""
+                }, {
+                "g1_image": "",
+                    "g1_name": "糖酒茶",
+                    "g1_code": 60000,
+                    "description": ""
+                }, {
+                "g1_image": "",
+                    "g1_name": "酒店用品",
+                    "g1_code": 70000,
+                    "description": ""
+                }, {
+                "g1_image": "",
+                    "g1_name": "厨房设备",
+                    "g1_code": 80000,
+                    "description": ""
+                }]
+}

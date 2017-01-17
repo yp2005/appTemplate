@@ -1,0 +1,545 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _stringify = require('babel-runtime/core-js/json/stringify');
+
+var _stringify2 = _interopRequireDefault(_stringify);
+
+var _keys = require('babel-runtime/core-js/object/keys');
+
+var _keys2 = _interopRequireDefault(_keys);
+
+var _typeof2 = require('babel-runtime/helpers/typeof');
+
+var _typeof3 = _interopRequireDefault(_typeof2);
+
+var _webpackMerge = require('webpack-merge');
+
+var _webpackMerge2 = _interopRequireDefault(_webpackMerge);
+
+var _logUtils = require('./logUtils');
+
+var _logUtils2 = _interopRequireDefault(_logUtils);
+
+var _propUtils = require('./propUtils');
+
+var _propUtils2 = _interopRequireDefault(_propUtils);
+
+var _utils = require('./utils');
+
+var _utils2 = _interopRequireDefault(_utils);
+
+var _cacheUtils = require('./cacheUtils');
+
+var _cacheUtils2 = _interopRequireDefault(_cacheUtils);
+
+var _api = require('api');
+
+var _api2 = _interopRequireDefault(_api);
+
+var _consts = require('./consts');
+
+var _consts2 = _interopRequireDefault(_consts);
+
+var _imageUtils = require('./image-utils');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var openWindow = function openWindow(url, id, options) {
+    if (unsafeTap()) {
+        return false;
+    }
+
+    id = id || url;
+    options = options || {};
+
+    if ((typeof id === 'undefined' ? 'undefined' : (0, _typeof3.default)(id)) === 'object') {
+        options = id;
+        id = url;
+    }
+
+    options = (0, _webpackMerge2.default)({
+        styles: {
+            popGesture: 'close',
+            softinputMode: 'adjustResize'
+        },
+        show: {
+            autoShow: true,
+            aniShow: 'pop-in',
+            duration: 300
+        },
+        waiting: {
+            autoShow: false },
+        createNew: false
+    }, options || {});
+
+    var blacklist = _propUtils2.default.getProperty('webview.id.blacklist', 'urlprops');
+    if (!blacklist.some(function (item) {
+        return item === id;
+    })) {
+        _cacheUtils2.default.localStorage(_consts2.default.PREFIX_LOGIN).setObject(_consts2.default.LOGIN_FORWORD, {
+            url: url,
+            id: id,
+            options: options || {}
+        });
+        _logUtils2.default.log('缓存的url:' + url);
+    }
+
+    if (options.isValidLogin === true) {
+        if (loginValid() === false) {
+            return false;
+        }
+    }
+
+    hideKeyBord();
+    setStatusStyleForPageId(id);
+    var gotoPage = plus.webview.getWebviewById(id);
+    var pagelist = _propUtils2.default.getProperty('webview.preload.whiltlist', 'urlprops');
+    if (gotoPage && !options.createNew) {
+        if (pagelist.some(function (item) {
+            return item === id;
+        })) {
+            mui.fire(gotoPage, _consts2.default.WEBVIEW_SHOW_EVENT, options.extras);
+        }
+        gotoPage.hide();
+        gotoPage.show(options.show.aniShow, options.show.duration);
+    } else {
+        gotoPage = mui.openWindow(url, id, options);
+        if (!pagelist.some(function (item) {
+            return item === id;
+        })) {
+            controlOpenPage(id);
+        }
+    }
+
+    if (options.isClose === true) {
+        setTimeout(function () {
+            closWebview();
+        }, 1100);
+    }
+    setTimeout(function () {
+        popGestureEvent(gotoPage);
+    }, 300);
+    return gotoPage;
+};
+
+var setStatusStyle = function setStatusStyle() {
+    if (!plus) {
+        return;
+    }
+    if (window.localStorage.getItem('openwindow_seller_index') === '0') {
+        plus.navigator.setStatusBarBackground('#419fdc');
+    } else {
+        plus.navigator.setStatusBarBackground('#f04e30');
+    }
+    plus.navigator.setStatusBarStyle('UIStatusBarStyleBlackOpaque');
+};
+
+var setStatusStyleForPageId = function setStatusStyleForPageId(id) {
+    if (!plus) {
+        return;
+    }
+    if (id === 'main') {
+        window.localStorage.setItem('openwindow_seller_index', '1');
+    } else if (id === 'seller_index') {
+        window.localStorage.setItem('openwindow_seller_index', '0');
+    }
+    setStatusStyle();
+};
+
+var tapFirst = null;
+var unsafeTap = function unsafeTap() {
+    if (!tapFirst) {
+        tapFirst = new Date().getTime();
+        setTimeout(function () {
+            tapFirst = null;
+        }, 500);
+    } else {
+        return true;
+    }
+};
+
+var popGestureEvent = function popGestureEvent(gotoPage) {
+    var sbb = null;
+    var sbs = null;
+    gotoPage.addEventListener('popGesture', function (e) {
+        sbb = sbb || plus.navigator.getStatusBarBackground();
+        sbs = sbs || plus.navigator.getStatusBarStyle();
+        if (e.type === 'end') {
+            if (e.result === false) {
+                plus.navigator.setStatusBarBackground(sbb);
+                plus.navigator.setStatusBarStyle(sbs);
+            }
+        }
+        if (e.type === 'move' && e.progress > 55) {
+            var id = plus.webview.currentWebview().id;
+            if (id === 'main') {
+                setStatusStyleForPageId('main');
+            }
+        }
+    }, false);
+};
+
+var controlOpenPage = function controlOpenPage(id) {
+    var maxNum = _propUtils2.default.getProperty('open_page_num', 'UIprops');
+    var allView = plus.webview.all();
+    var pagelist = _propUtils2.default.getProperty('webview.preload.whiltlist', 'urlprops');
+    allView = allView.filter(function (item) {
+        return !pagelist.some(function (id) {
+            return id === item.id;
+        });
+    });
+    if (allView.length > maxNum) {
+        _logUtils2.default.log(maxNum + 'openPage is max:' + allView.length, 'controlOpenPage()');
+        setTimeout(function () {
+            allView.splice(0, 1).map(function (id) {
+                plus.webview.close(id, 'none');
+            });
+        }, 1000);
+    }
+};
+
+var closeAllOpenPage = function closeAllOpenPage() {
+    var allView = plus.webview.all();
+    var pagelist = _propUtils2.default.getProperty('webview.preload.whiltlist', 'urlprops');
+    allView = allView.filter(function (item) {
+        return !pagelist.some(function (id) {
+            return id === item.id;
+        });
+    });
+    _logUtils2.default.log('closeAllOpenPage is max:' + allView.length, 'closeAllOpenPage()');
+    setTimeout(function () {
+        allView.map(function (id) {
+            plus.webview.close(id, 'none');
+        });
+    }, 1000);
+};
+
+var openPreWindow = function openPreWindow(options) {
+    var o = _cacheUtils2.default.localStorage(_consts2.default.PREFIX_LOGIN).getObject(_consts2.default.LOGIN_FORWORD) || _api2.default.PAGE_URL.buyer_index;
+    options = options || {};
+
+    options = (0, _webpackMerge2.default)(o.options || {}, options || {});
+    options = (0, _webpackMerge2.default)({
+        styles: {
+            popGesture: 'close'
+        },
+        show: {
+            autoShow: true,
+            aniShow: 'pop-in',
+            duration: 300
+        },
+        waiting: {
+            autoShow: false }
+    }, options || {});
+
+    var login = true;
+    var gotoPage = plus.webview.getWebviewById(o.id);
+    if (o.id === _api2.default.PAGE_URL.buyer_index.id) {
+        var accessToken = _cacheUtils2.default.localStorage(_consts2.default.PREFIX_LOGIN).get(_consts2.default.LOGIN_ACCESS_TOKEN);
+        if (accessToken === undefined || accessToken == null || accessToken === '' || accessToken === 'null') {
+            login = false;
+        }
+        if (options.openIndex !== undefined) {
+            mui.fire(gotoPage, 'home_nav', {
+                index: options.openIndex
+            });
+        }
+        setTimeout(function () {
+            gotoPage.hide();
+            gotoPage.show(options.show.aniShow, options.show.duration);
+        }, 300);
+        if (login === false) {
+            mui.fire(plus.webview.getWebviewById(o.id), _consts2.default.LOGIN_OUT_EVENT, {});
+            return;
+        }
+        mui.fire(gotoPage, _consts2.default.LOGIN_COMPUTER_EVENT, {});
+        setTimeout(function () {
+            closWebview();
+        }, 1000);
+    } else if (gotoPage) {
+        mui.fire(gotoPage, _consts2.default.LOGIN_COMPUTER_EVENT, {});
+        setTimeout(function () {
+            gotoPage.hide();
+            gotoPage.show(options.show.aniShow, options.show.duration);
+        }, 300);
+        setTimeout(function () {
+            plus.webview.currentWebview().close('none');
+        }, 1000);
+    } else {
+        mui.openWindow(o.url, o.id, options);
+        setTimeout(function () {
+            plus.webview.currentWebview().close('none');
+        }, 500);
+    }
+};
+
+var openIndexWindow = function openIndexWindow(type, options) {
+    options = options || {};
+    var openIndex = options.openIndex || 0;
+    mui.fire(plus.webview.getWebviewById(_api2.default.PAGE_URL.buyer_index.id), 'home_nav', {
+        index: openIndex
+    });
+    var id = _api2.default.PAGE_URL.buyer_index.id;
+    var url = _api2.default.PAGE_URL.buyer_index.url;
+    if (type === 'seller') {
+        id = _api2.default.PAGE_URL.seller_index.id;
+        url = _api2.default.PAGE_URL.seller_index.url;
+    }
+
+    setTimeout(function () {
+        openWindow(url, id, options);
+    }, 300);
+};
+
+var closWebview = function closWebview() {
+    if (plus.webview.currentWebview().id !== 'main') {
+        plus.webview.currentWebview().close('none');
+    }
+};
+
+var getNetworkType = function getNetworkType() {
+    var types = {};
+    types[plus.networkinfo.CONNECTION_UNKNOW] = 'Unknown connection';
+    types[plus.networkinfo.CONNECTION_NONE] = 'None connection';
+    types[plus.networkinfo.CONNECTION_ETHERNET] = 'Ethernet connection';
+    types[plus.networkinfo.CONNECTION_WIFI] = 'WiFi connection';
+    types[plus.networkinfo.CONNECTION_CELL2G] = 'Cellular 2G connection';
+    types[plus.networkinfo.CONNECTION_CELL3G] = 'Cellular 3G connection';
+    types[plus.networkinfo.CONNECTION_CELL4G] = 'Cellular 4G connection';
+    _logUtils2.default.log('networkinfo:' + plus.networkinfo.getCurrentType(), 'getNetworkType()');
+    return plus.networkinfo.getCurrentType();
+};
+
+var getNetworkTypeZH = function getNetworkTypeZH() {
+    var types = {};
+    types[plus.networkinfo.CONNECTION_UNKNOW] = '网络连接状态未知';
+    types[plus.networkinfo.CONNECTION_NONE] = '未连接网络';
+    types[plus.networkinfo.CONNECTION_ETHERNET] = '有线网络';
+    types[plus.networkinfo.CONNECTION_WIFI] = 'WiFi网络';
+    types[plus.networkinfo.CONNECTION_CELL2G] = '2G网络';
+    types[plus.networkinfo.CONNECTION_CELL3G] = '3G网络';
+    types[plus.networkinfo.CONNECTION_CELL4G] = '4G网络';
+
+    return types[plus.networkinfo.getCurrentType()];
+};
+
+var forwordError = function forwordError(options) {
+    options = options || {};
+    var url = _api2.default.PAGE_URL.error_connect.url;
+    var id = _api2.default.PAGE_URL.error_connect.id;
+    _logUtils2.default.log(id + 'forwordError:' + url, 'forwordError()');
+    mui.openWindow(url, id, {});
+};
+
+var muiAjax = function muiAjax(url, options) {
+    if (options.loading === undefined) {
+        options.loading = true;
+    }
+    _logUtils2.default.log('url:' + url + ' options:' + _utils2.default.stringify(options));
+
+    mui.ajaxSettings.inspect = ajaxInspect;
+    mui.ajaxSettings.success = ajaxSuccess;
+    mui.ajaxSettings.error = ajaxError;
+    mui.ajaxSettings.complete = ajaxComplete;
+
+    mui.ajaxSettings.timeout = 10000;
+    if (ajaxBeforeSend(options, url) === false) {
+        _logUtils2.default.log('ajaxBeforeSend has return false', 'muiAjax ajaxBeforeSend');
+
+        return false;
+    }
+    mui.ajax(url, options);
+};
+
+var loginValid = function loginValid(cb, opt) {
+    var accessToken = _cacheUtils2.default.localStorage(_consts2.default.PREFIX_LOGIN).get(_consts2.default.LOGIN_ACCESS_TOKEN);
+    if (accessToken === undefined || accessToken == null || accessToken === '' || accessToken === 'null') {
+        var ops = {
+            styles: {
+                popGesture: 'close',
+                softinputMode: 'adjustResize'
+            },
+            show: {
+                autoShow: true,
+                aniShow: 'pop-in',
+                duration: 300
+            },
+            waiting: {
+                autoShow: false },
+            createNew: false
+        };
+        if (cb !== undefined && typeof cb === 'function') {
+            window.addEventListener(_consts2.default.LOGIN_COMPUTER_EVENT, function (e) {
+                _logUtils2.default.log(_consts2.default.LOGIN_COMPUTER_EVENT, 'loginValidHasCb');
+
+                if (typeof cb === 'function') {
+                    cb(opt);
+                } else {
+                    _logUtils2.default.log('cbSuccess must be function!');
+                }
+            });
+        }
+        mui.openWindow(_api2.default.PAGE_URL.login_index.url, _api2.default.PAGE_URL.login_index.id, ops);
+        return false;
+    } else {
+        if (cb !== undefined && typeof cb === 'function') {
+            cb(opt);
+        }
+        return true;
+    }
+};
+
+var ajaxBeforeSend = function ajaxBeforeSend(options, url) {
+    options.headers = options.headers || {};
+    var token = _cacheUtils2.default.localStorage(_consts2.default.PREFIX_LOGIN).get(_consts2.default.LOGIN_ACCESS_TOKEN);
+    var instanceId = _cacheUtils2.default.localStorage(_consts2.default.PREFIX_LOGIN).get(_consts2.default.APP_INSTANCE_ID);
+    if (instanceId === undefined || instanceId == null || instanceId === '' || instanceId === 'null') {
+        instanceId = _utils2.default.uuidV4();
+        _cacheUtils2.default.localStorage(_consts2.default.PREFIX_LOGIN).set(_consts2.default.APP_INSTANCE_ID, instanceId);
+    }
+
+    options.headers.instance_id = instanceId;
+    options.headers.access_token = token === 'null' || token == null ? '' : token;
+    options.headers.reqStartTime = new Date().getTime();
+    options.headers.url = url;
+    if (options.loading === true) {
+        var w = plus.nativeUI.showWaiting('处理中...');
+        options.nativeUI = w;
+    }
+};
+
+var ajaxInspect = function ajaxInspect(data, xhr, setting) {
+    if (setting.nativeUI !== undefined) {
+        setting.nativeUI.close();
+    }
+    var reqTime = new Date().getTime() - setting.headers.reqStartTime;
+    _logUtils2.default.log('url:' + setting.url);
+    _logUtils2.default.log('ajaxInspect reqTime:' + reqTime, 'ajaxInspect()');
+    if (data === 'error') {
+        _logUtils2.default.log('errorType:' + setting.inspecttype, 'error');
+        _logUtils2.default.log('error:' + setting.inspecterror, 'error');
+    } else {
+        var _ret = function () {
+            var tempData = data.result_data || {};
+            data.header = {
+                code: data.error_code + '',
+                msg: data.error_message
+            };
+            (0, _keys2.default)(tempData).map(function (item) {
+                data[item] = tempData[item];
+            });
+            delete data.error_code;
+            delete data.error_message;
+            delete data.error_data;
+            delete data.result_data;
+            _logUtils2.default.log('require data after deal:' + (0, _stringify2.default)(data));
+
+            if (data.header !== undefined && data.header.code === _consts2.default.ERROR_CODE.INSUFFICIENT_PERMISSIONS) {
+                _logUtils2.default.log('权限不足', 'ajaxInspect');
+                if (loginValid() === false) {
+                    setting.error();
+                    return {
+                        v: false
+                    };
+                }
+            }
+            var instanceId = xhr.getResponseHeader(_consts2.default.APP_INSTANCE_ID);
+            if (instanceId === _cacheUtils2.default.localStorage(_consts2.default.PREFIX_LOGIN).get(_consts2.default.APP_INSTANCE_ID)) {
+                _logUtils2.default.log("it's my require!!!!", 'valid instanceId is ok');
+            } else {
+                _logUtils2.default.log('it is not  my require!!!!,the token is no safe,please login again and change password,' + instanceId, 'valid instanceId is nok');
+            }
+
+            var token = xhr.getResponseHeader(_consts2.default.LOGIN_ACCESS_TOKEN) || _cacheUtils2.default.localStorage(_consts2.default.PREFIX_LOGIN).get(_consts2.default.LOGIN_ACCESS_TOKEN);
+
+            _cacheUtils2.default.localStorage(_consts2.default.PREFIX_LOGIN).set(_consts2.default.LOGIN_ACCESS_TOKEN, token);
+        }();
+
+        if ((typeof _ret === 'undefined' ? 'undefined' : (0, _typeof3.default)(_ret)) === "object") return _ret.v;
+    }
+
+    return true;
+};
+
+var ajaxSuccess = function ajaxSuccess(data, xhr, setting) {
+    _logUtils2.default.log('ajaxSuccess' + data, 'muiUtils.js');
+};
+
+var ajaxError = function ajaxError(error, type, xhr, setting) {
+    _logUtils2.default.log('ajaxError' + error + type, 'muiUtils.js');
+};
+
+var ajaxComplete = function ajaxComplete(status, xhr, setting) {
+    var reqTime = new Date().getTime() - setting.headers.reqStartTime;
+
+    _logUtils2.default.log('ajaxComplete reqTime:' + reqTime, 'ajaxComplete()');
+};
+
+var getLoginUserInfo = function getLoginUserInfo() {
+    var accessToken = _cacheUtils2.default.localStorage(_consts2.default.PREFIX_LOGIN).get(_consts2.default.LOGIN_ACCESS_TOKEN);
+    if (accessToken === 'undefined' || accessToken == null || accessToken === '' || accessToken === 'null') {
+        return {};
+    } else {
+        var localStorage = _cacheUtils2.default.localStorage(_consts2.default.PREFIX_LOGIN);
+        var userInfo = localStorage.getObject(_consts2.default.USER_INFO);
+        return userInfo;
+    }
+};
+
+var clearMemory = function clearMemory(onlyMemory) {
+    var instanceId = window.localStorage.getItem(_consts2.default.PREFIX_LOGIN + '_' + _consts2.default.APP_INSTANCE_ID);
+    var accessToken = window.localStorage.getItem(_consts2.default.PREFIX_LOGIN + '_' + _consts2.default.LOGIN_ACCESS_TOKEN);
+    var userInfo = window.localStorage.getItem(_consts2.default.PREFIX_LOGIN + '_' + _consts2.default.USER_INFO);
+    window.localStorage.clear();
+    _cacheUtils2.default.cookie.clear();
+    window.sessionStorage.clear();
+    if (onlyMemory !== true) {
+        (0, _imageUtils.delAllFile)();
+    }
+    _cacheUtils2.default.localStorage(_consts2.default.PREFIX_LOGIN).set(_consts2.default.APP_INSTANCE_ID, instanceId === undefined ? '' : instanceId);
+    _cacheUtils2.default.localStorage(_consts2.default.PREFIX_LOGIN).set(_consts2.default.LOGIN_ACCESS_TOKEN, accessToken === undefined ? '' : accessToken);
+    _cacheUtils2.default.localStorage(_consts2.default.PREFIX_LOGIN).set(_consts2.default.USER_INFO, userInfo === undefined ? '' : userInfo);
+};
+
+var hideKeyBord = function hideKeyBord(url) {
+    if (document.documentElement.clientHeight < plus.webview.currentWebview().pageOldH) {
+        var nativeWebview = plus.webview.currentWebview().nativeInstanceObject();
+        if (mui.os.android) {}
+        if (mui.os.ios) {
+            var tagName = document.activeElement.tagName.toLowerCase();
+            if (tagName == 'input' || tagName == 'textarea') {
+                document.activeElement.blur();
+                return;
+            }
+            nativeWebview.plusCallMethod({
+                'setKeyboardDisplayRequiresUserAction': false
+            });
+            var input = document.createElement('input');
+            document.body.appendChild(input);
+            input.focus();
+            input.blur();
+            document.body.removeChild(input);
+            input = null;
+        }
+    }
+};
+
+exports.default = {
+    openWindow: openWindow,
+    openPreWindow: openPreWindow,
+    openIndexWindow: openIndexWindow,
+    getNetworkType: getNetworkType,
+    getNetworkTypeZH: getNetworkTypeZH,
+    forwordError: forwordError,
+    muiAjax: muiAjax,
+    loginValid: loginValid,
+    getLoginUserInfo: getLoginUserInfo,
+    clearMemory: clearMemory,
+    closeAllOpenPage: closeAllOpenPage,
+    setStatusStyle: setStatusStyle,
+    setStatusStyleForPageId: setStatusStyleForPageId
+};

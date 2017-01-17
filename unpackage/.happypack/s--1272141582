@@ -1,0 +1,237 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _domain = require('./domain');
+
+var API_VERSION = 'v10';
+
+var API_LOGIN = {
+    sms_code_send: _domain.SSO_DOMAIN + '/account/' + API_VERSION + '/mobile/sms_code/send',
+    sms_code_check: _domain.SSO_DOMAIN + '/account/' + API_VERSION + '/mobile/sms_code/check',
+    mobile_is_used: _domain.SSO_DOMAIN + '/account/' + API_VERSION + '/mobile/is_used',
+    login: _domain.SSO_DOMAIN + '/account/' + API_VERSION + '/login/login',
+    user_is_exist: _domain.SSO_DOMAIN + '/account/' + API_VERSION + '/account_name/is_used',
+    check_user_psd: _domain.SSO_DOMAIN + '/account/' + API_VERSION + '/account_name/check',
+
+    user_set_name: _domain.SSO_DOMAIN + '/account/' + API_VERSION + '/account_name/set',
+
+    user_register: _domain.SSO_DOMAIN + '/account/' + API_VERSION + '/register/register',
+
+    password_reset: _domain.SSO_DOMAIN + '/account/' + API_VERSION + '/password/reset',
+
+    mobile_reset: _domain.SSO_DOMAIN + '/account/' + API_VERSION + '/mobile/reset'
+};
+
+var COMMON_API = {
+    express_list: _domain.COMMONAPI + '/common/' + API_VERSION + '/express/list'
+};
+
+var BUYER_HOME_API = {
+    home_index: _domain.MARKETAPI + '/market/' + API_VERSION + '/buyer/homepage',
+    update_customization: _domain.MARKETAPI + '/market/' + API_VERSION + '/get/customization',
+    favorite_list: _domain.MEMBERAPI + '/member/' + API_VERSION + '/customer/favorite/list'
+};
+
+var SELLER_HOME_API = {
+    news_list: _domain.MARKETAPI + '/market/' + API_VERSION + '/news/list',
+    news_detail: _domain.MARKETAPI + '/market/' + API_VERSION + '/news/detail'
+};
+
+var CONTRACT_API = {
+    contract_info_list: _domain.ORDERAPI + '/order/' + API_VERSION + '/contract/list',
+    contract_info_detail: _domain.ORDERAPI + '/order/' + API_VERSION + '/contract/detail',
+    contract_info_evaluate: _domain.PRODUCTAPI + '/goods/' + API_VERSION + '/evaluation',
+    submit_contract: _domain.ORDERAPI + '/order/' + API_VERSION + '/contract/add',
+    contract_relief_discount: _domain.ORDERAPI + '/order/' + API_VERSION + '/contract/edit',
+    contract_cancel: _domain.ORDERAPI + '/order/' + API_VERSION + '/contract/cancel',
+    shipping_info: _domain.ORDERAPI + '/order/' + API_VERSION + '/get/shipping/info'
+};
+
+var IMCHAT_API = {
+    upload_url: _domain.IMCHAT_UPLOAD + '/payment/appupload/upload_image',
+    socket_server: _domain.IMCHAT,
+    history_msg: _domain.IMCHAT_HISTORY + '/jxdd-app/msgHis',
+    history_msg_by_id: _domain.IMCHAT_HISTORY + '/jxdd-app/msgHisById'
+};
+
+var BUYHALL_API = {
+    buying_info_list: _domain.MARKETAPI + '/market/' + API_VERSION + '/purchasing/hall',
+    release_buying: _domain.MARKETAPI + '/market/' + API_VERSION + '/purchasing/publish',
+    buying_info_detail: _domain.MARKETAPI + '/market/' + API_VERSION + '/purchasing/item/details',
+    send_supplying: _domain.MARKETAPI + '/market/' + API_VERSION + '/providing/supply/intention'
+};
+
+var GOODSMANAGE_API = {
+    goods_operate: _domain.PRODUCTAPI + '/goods/' + API_VERSION + '/store/goods/operate'
+};
+
+var SELLHALL_API = {
+    supplier_info_list: _domain.MARKETAPI + '/market/' + API_VERSION + '/providing/list',
+    supplier_product_list: _domain.PRODUCTAPI + '/goods/' + API_VERSION + '/store/items/search',
+    supplier_info_delete: _domain.MARKETAPI + '/market/' + API_VERSION + '/providing/delete/list',
+    supplier_info_publish: _domain.MARKETAPI + '/market/' + API_VERSION + '/providing/publish/item'
+};
+
+var ADDRESS_API = {
+    address_list: _domain.STOREAPI + '/store/' + API_VERSION + '/shipping/address/list',
+    address_save: _domain.STOREAPI + '/store/' + API_VERSION + '/shipping/address/update',
+    address_delete: _domain.STOREAPI + '/store/' + API_VERSION + '/shipping/address/delete',
+    address_set_default: _domain.STOREAPI + '/store/' + API_VERSION + '/shipping/address/default',
+    area_list: _domain.COMMONAPI + '/common/' + API_VERSION + '/area/list'
+};
+
+var PUBLIC_API = {
+    category_g1: _domain.PRODUCTAPI + '/goods/' + API_VERSION + '/category/g1',
+    category_g23: _domain.PRODUCTAPI + '/goods/' + API_VERSION + '/category/g23',
+    category_g123: _domain.PRODUCTAPI + '/goods/' + API_VERSION + '/category/g123',
+    supplier_category_search: _domain.PRODUCTAPI + '/goods/' + API_VERSION + '/category/store/g12',
+    upload_image: _domain.COMMONAPI + '/common/' + API_VERSION + '/upload/image'
+};
+
+var STORE_API = {
+    shipment_template: _domain.STOREAPI + '/store/' + API_VERSION + '/shipping/template/list',
+    car_add: _domain.MEMBERAPI + '/member/' + API_VERSION + '/cart/add',
+    store_info: _domain.STOREAPI + '/store/' + API_VERSION + '/get/store/info',
+    store_address_list: _domain.STOREAPI + '/store/' + API_VERSION + '/store/address/list',
+    store_category: _domain.PRODUCTAPI + '/goods/' + API_VERSION + '/category/store/g12',
+    store_collect: _domain.MEMBERAPI + '/member/' + API_VERSION + '/add/collection',
+    stock_check: _domain.PRODUCTAPI + '/goods/' + API_VERSION + '/check/stock'
+};
+
+var ORDER_API = {
+    order_list: _domain.MEMBERAPI + '/member/' + API_VERSION + '/cart/list',
+    order_operate: _domain.MEMBERAPI + '/member/' + API_VERSION + '/cart/operate'
+};
+
+var MINE_API = {
+    advice_add: _domain.MEMBERAPI + '/member/' + API_VERSION + '/advice/add/',
+    browse_history: _domain.MEMBERAPI + '/member/' + API_VERSION + '/browse/history',
+    delete_browse_history: _domain.MEMBERAPI + '/member/' + API_VERSION + '/delete/history',
+    contract_state: _domain.MEMBERAPI + '/member/' + API_VERSION + '/contract/state',
+    update_member: _domain.MEMBERAPI + '/member/' + API_VERSION + '/update/member/info',
+    get_member_info: _domain.MEMBERAPI + '/member/' + API_VERSION + '/get/member/info',
+    collection_list: _domain.MEMBERAPI + '/member/' + API_VERSION + '/my/collection',
+    cancel_collection: _domain.MEMBERAPI + '/member/' + API_VERSION + '/cancel/collection/'
+};
+
+var BUYER_SUPPLIER = {
+    supplier_list: _domain.MARKETAPI + '/market/' + API_VERSION + '/providing/hall'
+};
+
+var BUYER_PURCHASE = {
+    purchase_list: _domain.MARKETAPI + '/market/' + API_VERSION + '/purchasing/list',
+    purchase_item_delete: _domain.MARKETAPI + '/market/' + API_VERSION + '/purchasing/item/delete',
+
+    buying_info_detail: _domain.MARKETAPI + '/market/' + API_VERSION + '/purchasing/item/details',
+    feedback_list: _domain.MARKETAPI + '/market/' + API_VERSION + '/purchasing/feedback/list'
+};
+
+var GOODS_API = {
+    goods_list_search: _domain.PRODUCTAPI + '/goods/' + API_VERSION + '/mobile/search',
+    goods_publish: _domain.PRODUCTAPI + '/goods/' + API_VERSION + '/mobile/goods/publish',
+    goods_shipping_fee: _domain.PRODUCTAPI + '/goods/' + API_VERSION + '/shipping/fee',
+
+    goods_activity_list: _domain.MARKETAPI + '/market/' + API_VERSION + '/store/activity/search',
+    goods_details: _domain.PRODUCTAPI + '/goods/' + API_VERSION + '/details',
+    goods_iscollected: _domain.PRODUCTAPI + '/goods/' + API_VERSION + '/goods/is/collected',
+    goods_hot_search: _domain.PRODUCTAPI + '/goods/' + API_VERSION + '/hot/search'
+};
+
+var INDUSTRY_API = {
+    industry_get: _domain.MARKETAPI + '/market/' + API_VERSION + '/get/customization',
+    industry_edit: _domain.MARKETAPI + '/market/' + API_VERSION + '/edit/customization'
+};
+
+var PAYMENT_API = {
+    bank_list: _domain.PAYMENT + '/bankList',
+    line_pay: _domain.PAYMENT + '/linePay',
+    my_bank_manage: _domain.PAYMENT + '/myBank'
+};
+
+var PAGE_URL = {
+    buyer_index: {
+        id: 'main',
+        url: '../../buyer/index/main.html'
+    },
+
+    seller_index: {
+        id: 'seller_index',
+        url: '../../seller/index/sellerindex.html'
+    },
+
+    error_connect: {
+        id: 'loginIndex',
+        url: '../../commonpage/error/error_connect.html'
+    },
+
+    protocol: {
+        id: 'protocol',
+        url: '../../commonpage/login/protocol.html'
+    },
+
+    login_index: {
+        id: 'account_login_password',
+        url: '../../commonpage/login/index.html'
+    },
+
+    phone_login_index: {
+        id: 'account_login_msg',
+        url: '../../commonpage/login/phoneLogin.html'
+    },
+
+    account_register: {
+        id: 'account_register',
+        url: '../../commonpage/login/reg.html'
+    },
+
+    set_login: {
+        id: 'account_set_login',
+        url: '../../commonpage/login/setlogin.html'
+    },
+
+    forgot_password: {
+        id: 'account_forgot_password',
+        url: '../../commonpage/login/forgotPassword.html'
+    },
+
+    reset_password: {
+        id: 'account_reset_password',
+        url: '../../commonpage/login/setPassword.html'
+    },
+
+    modify_password: {
+        id: 'buyer_mine_usersetting_edituserdata_modifypassword',
+        url: '../../buyer/edituserdata/modifypassword.html'
+    },
+
+    modify_bindingphone: {
+        id: 'buyer_mine_usersetting_edituserdata_modifybindingphone',
+        url: '../../buyer/edituserdata/modifybindingphone.html'
+    }
+};
+
+exports.default = {
+    API_LOGIN: API_LOGIN,
+    PAGE_URL: PAGE_URL,
+    BUYHALL_API: BUYHALL_API,
+    GOODSMANAGE_API: GOODSMANAGE_API,
+    SELLHALL_API: SELLHALL_API,
+    PUBLIC_API: PUBLIC_API,
+    BUYER_SUPPLIER: BUYER_SUPPLIER,
+    CONTRACT_API: CONTRACT_API,
+    ADDRESS_API: ADDRESS_API,
+    ORDER_API: ORDER_API,
+    BUYER_PURCHASE: BUYER_PURCHASE,
+    BUYER_HOME_API: BUYER_HOME_API,
+    SELLER_HOME_API: SELLER_HOME_API,
+    GOODS_API: GOODS_API,
+    STORE_API: STORE_API,
+    MINE_API: MINE_API,
+    INDUSTRY_API: INDUSTRY_API,
+    IMCHAT_API: IMCHAT_API,
+    COMMON_API: COMMON_API,
+    PAYMENT_API: PAYMENT_API
+};

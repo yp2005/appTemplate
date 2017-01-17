@@ -1,0 +1,2348 @@
+{
+    "@platforms": [
+        "android",
+        "iPhone",
+        "iPad"
+    ],
+    "id": "H5A97BC9F",/*应用的标识，创建应用时自动生成，勿手动修改*/
+    "name": "jxdd",/*应用名称，程序桌面图标名称*/
+    "version": {
+        "name": "1.0.0",/*应用版本名称*/
+        "code": "83"
+    },
+    "description": "",/*应用描述信息*/
+    "icons": {
+        "72": "icon.png"
+    },
+    "launch_path": "dist/commonpage/index/index.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+    "developer": {
+        "name": "jxdd",/*开发者名称*/
+        "email": "",/*开发者邮箱地址*/
+        "url": "http://www.jxdd.com"
+    },
+    "permissions": {
+        
+        
+        "Cache": {
+            "description": "管理应用缓存"
+        },
+        "Camera": {},
+        "Console": {
+            "description": "跟踪调试输出日志"
+        },
+        
+        "Device": {},
+        "Downloader": {},
+        "Events": {
+            "description": "应用扩展事件"
+        },
+        "File": {},
+        "Gallery": {},
+        
+        "Invocation": {},
+        
+        
+        
+        "Storage": {},
+
+        
+        "Runtime": {},
+        "XMLHttpRequest": {},
+        
+        "Barcode": {},
+
+        
+        "Webview": {},
+        "NativeUI": {},
+        "Navigator": {},
+        "NativeObj": {},"Push":{},"Zip":{},"Maps":{},"Audio":{},"Speech":{},"Uploader":{},"Contacts":{},"Proximity":{},"Messaging":{},"Orientation":{},"Geolocation":{},"Accelerometer":{}
+    },
+    "plus": {
+        "splashscreen": {
+            "autoclose": false,/*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
+            "waiting": true,
+            "delay": "1000"
+        },
+        "error": {
+            "url": "dist/commonpage/error/error_connect.html"
+        },
+        "runmode": "normal",/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
+        "signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
+        "distribute": {
+            "plugins": {
+                "push": {"igexin":{"appid":"pZEVNLBYIw7GCMQtegVr89","appkey":"HD69XVl29n9ca00Y73WOoA","appsecret":"cGeD3Mp5xc9CUj3fymMQd7"}}
+            },
+            "apple": {
+                "appid": "",/*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
+                "mobileprovision": "",/*iOS应用打包配置文件*/
+                "password": "",/*iOS应用打包个人证书导入密码*/
+                "p12": "",/*iOS应用打包个人证书，打包配置文件关联的个人证书*/
+                "devices": "universal",/*iOS应用支持的设备类型，可取值iphone/ipad/universal*/
+                "frameworks": [],
+                "urltypes": [
+                    {
+                        "urlschemes": [
+                            "http",
+                            "https"
+                        ]
+                    }
+                ]
+            },
+            "google": {
+                "packagename": "",/*Android应用包名，如io.dcloud.HelloH5*/
+                "keystore": "",/*Android应用打包使用的密钥库文件*/
+                "password": "",/*Android应用打包使用密钥库中证书的密码*/
+                "aliasname": "",/*Android应用打包使用密钥库中证书的别名*/
+                "permissions": ["<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>","<uses-permission android:name=\"android.permission.GET_TASKS\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\"/>","<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>","<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>","<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"android.permission.SEND_SMS\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.RECEIVE_USER_PRESENT\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>","<uses-permission android:name=\"android.permission.WRITE_SMS\"/>","<uses-permission android:name=\"android.permission.READ_SMS\"/>"]
+            },
+            "orientation": ["portrait-primary"],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
+            "icons": {
+                "ios": {
+                    "prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
+                    "auto": "", /*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
+                    "iphone": {
+                        "normal": "unpackage/res/icons/57x57.png",/*iPhone普通屏幕程序图标，分辨率：57x57*/
+                        "retina": "unpackage/res/icons/114x114.png",/*iPhone高分屏程序图标，分辨率：114x114*/
+                        "retina7": "unpackage/res/icons/120x120.png",/*iPhone iOS7高分屏程序图标，分辨率：120x120*/
+                        "spotlight-normal": "unpackage/res/icons/29x29.png", /*iPhone Spotlight搜索程序图标，分辨率：29x29*/
+                        "spotlight-retina": "unpackage/res/icons/58x58.png", /*iPhone高分屏Spotlight搜索程序图标，分辨率：58x58*/
+                        "spotlight-retina7": "unpackage/res/icons/80x80.png",/*iPhone iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+                        "settings-normal": "unpackage/res/icons/29x29.png", /*iPhone设置页面程序图标，分辨率：29x29*/
+                        "settings-retina": "unpackage/res/icons/58x58.png",
+                        "retina8": "unpackage/res/icons/180x180.png",
+                        "settings-retina8": "unpackage/res/icons/87x87.png"
+                    },
+                    "ipad": {
+                        "normal": "unpackage/res/icons/72x72.png", /*iPad普通屏幕程序图标，分辨率：72x72*/
+                        "retina": "unpackage/res/icons/144x144.png", /*iPad高分屏程序图标，分辨率：144x144*/
+                        "normal7": "unpackage/res/icons/76x76.png", /*iPad iOS7程序图标，分辨率：76x76*/
+                        "retina7": "unpackage/res/icons/152x152.png", /*iPad iOS7高分屏程序图标，分辨率：152x152*/
+                        "spotlight-normal": "unpackage/res/icons/50x50.png", /*iPad Spotlight搜索程序图标，分辨率：50x50*/
+                        "spotlight-retina": "unpackage/res/icons/100x100.png", /*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
+                        "spotlight-normal7": "unpackage/res/icons/40x40.png",/*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
+                        "spotlight-retina7": "unpackage/res/icons/80x80.png",/*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+                        "settings-normal": "unpackage/res/icons/29x29.png",/*iPad设置页面程序图标，分辨率：29x29*/
+                        "settings-retina": "unpackage/res/icons/58x58.png"
+                    }
+                },
+                "android": {
+                    "mdpi": "unpackage/res/icons/48x48.png", /*普通屏程序图标，分辨率：48x48*/
+                    "ldpi": "unpackage/res/icons/48x48.png", /*大屏程序图标，分辨率：48x48*/
+                    "hdpi": "unpackage/res/icons/72x72.png", /*高分屏程序图标，分辨率：72x72*/
+                    "xhdpi": "unpackage/res/icons/96x96.png",/*720P高分屏程序图标，分辨率：96x96*/
+                    "xxhdpi": "unpackage/res/icons/144x144.png"
+                }
+            },
+            "splashscreen": {
+                "ios": {
+                    "iphone": {
+                        "default": "start.png", /*iPhone3启动图片选，分辨率：320x480*/
+                        "retina35": "start.png",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
+                        "retina40": "start.png","retina55":"start.png","retina47":"start.png","retina55l":"start.png"
+                    },
+                    "ipad": {
+                        "portrait": "start.png", /*iPad竖屏启动图片，分辨率：768x1004*/
+                        "portrait-retina": "start.png",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
+                        "landscape": "start.png", /*iPad横屏启动图片，分辨率：1024x748*/
+                        "landscape-retina": "start.png", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
+                        "portrait7": "start.png", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
+                        "portrait-retina7": "",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
+                        "landscape7": "start.png", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
+                        "landscape-retina7": ""
+                    }
+                },
+                "android": {"xxhdpi":"start.png","mdpi":"start.png","ldpi":"start.png","hdpi":"start.png","xhdpi":"start.png"
+                     /*普通屏启动图片，分辨率：240x282*/
+                     /*大屏启动图片，分辨率：320x442*/
+                     /*高分屏启动图片，分辨率：480x762*/
+                     /*720P高分屏启动图片，分辨率：720x1242*/
+                    
+                }
+            },
+            "debug": true
+        }
+    },
+    "dependencies": {
+		"pages": {
+			"dist/index.html": {
+				"href": "dist/index.html",
+				"priority": 0,
+				"resources": [],
+				"refer": []
+			},
+			"dist/index/index.html": {
+				"resources": [],
+				"refer": [
+					"dist/type/index.html",
+					"dist/mine/index.html",
+					"dist/order/index.html",
+					"dist/index/sellerindex.html",
+					"dist/index/asktobuy.html",
+					"dist/home/buyingHall.html",
+					"dist/supplier/index.html",
+					"dist/login/index.html"
+				],
+				"priority": 0
+			},
+			"dist/type/index.html": {
+				"resources": [],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/mine/index.html": {
+				"resources": [],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/order/index.html": {
+				"resources": [],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/home/index.html": {
+				"resources": [],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/index/sellerindex.html": {
+				"resources": [],
+				"refer": [
+					"dist/index/index.html",
+					"dist/index/imchat.html",
+					"dist/imchat/index.html"
+				],
+				"priority": 0
+			},
+			"dist/index/asktobuy.html": {
+				"resources": [],
+				"refer": [
+					"dist/index/index.html"
+				],
+				"priority": 0
+			},
+			"dist/home/buyingHallContent.html": {
+				"resources": [],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/home/buyingHall.html": {
+				"resources": [],
+				"refer": [
+					"dist/home/releaseBuying.html"
+				],
+				"priority": 0
+			},
+			"dist/home/releaseBuying.html": {
+				"resources": [],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/index/imchat.html": {
+				"resources": [],
+				"refer": [
+					"dist/index/index.html"
+				],
+				"priority": 0
+			},
+			"dist/supplier/index.html": {
+				"resources": [],
+				"refer": [
+					"dist/supplier/productlist.html"
+				],
+				"priority": 0
+			},
+			"dist/imchat/index.html": {
+				"resources": [],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/supplier/orderlist.html": {
+				"resources": [],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/supplier/productlist.html": {
+				"resources": [],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/login/index.html": {
+				"resources": [
+					"dist/static/css/iconfont.css",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css"
+				],
+				"refer": [
+					"dist/login/phoneLogin.html",
+					"dist//login/forgotPassword.html",
+					"dist/login/reg.html"
+				],
+				"priority": 0
+			},
+			"dist/login/phoneLogin.html": {
+				"resources": [
+					"dist/static/css/iconfont.css",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist//login/forgotPassword.html": {
+				"resources": [
+					"dist//static/css/mui.min.css",
+					"dist//static/css/iconfont.css",
+					"dist//static/js/mui.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/login/reg.html": {
+				"resources": [],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/buyer/index/index.html": {
+				"resources": [
+					"dist/static/css/iconfont.css",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/static/img/jx.jpg",
+					"dist/static/js/buyer/index/index.js",
+					"dist/static/js/vendors.js",
+					"dist/static/css/buyer/index/index.css",
+					"dist/buyer/order/orderlist.html",
+					"dist/commonpage/goods/goodslist.html",
+					"dist/buyer/type/index.html",
+					"dist/static/css/buyer/index/index.css.map",
+					"dist/static/js/vendors.js.map",
+					"dist/static/js/buyer/index/index.js.map",
+					"dist/static/js/buyer/supplier/index.js.map",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/img/placehold.png",
+					"dist/static/css/jxdd.css",
+					null,
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/buyer/home/buyingHall.html",
+					"dist/seller/index/sellerindex.html",
+					"dist/buyer/supplier/index.html",
+					"dist/commonpage/error/error_connect.html",
+					"dist/buyer/buyinghall/index.html",
+					"dist/commonpage/login/index.html",
+					"dist/commonpage/search/searchpage.html",
+					"dist/buyer/activity/index.html",
+					"dist/buyer/goodslist/goodslist.html",
+					"dist/buyer/mine/usersetting.html",
+					"dist/buyer/contract/index.html",
+					"dist/buyer/mine/myhistory.html",
+					"dist/buyer/mine/feedback.html",
+					"dist/commonpage/buyinghall/index.html",
+					"dist/commonpage/address/index.html",
+					"dist/buyer/supplier/product.html",
+					"dist/buyer/industry/index.html",
+					"dist/buyer/index/guide.html",
+					"dist/buyer/index/main.html",
+					"dist/commonpage/login/setlogin.html",
+					"dist/buyer/edituserdata/modifybindingphone.html",
+					"dist/commonpage/login/forgotPassword.html",
+					"dist/commonpage/login/reg.html",
+					"dist/commonpage/login/phoneLogin.html",
+					"dist/commonpage/login/protocol.html",
+					"dist/commonpage/login/setPassword.html",
+					"dist/buyer/edituserdata/modifypassword.html"
+				],
+				"priority": 0
+			},
+			"dist/buyer/home/buyingHallContent.html": {
+				"resources": [
+					"dist/static/js/mui.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/buyer/home/buyingHall.html": {
+				"resources": [
+					"dist/buyer/home/buyingHallContent.html",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/mui.js",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/mui.min.css"
+				],
+				"refer": [
+					"dist/buyer/home/releaseBuying.html"
+				],
+				"priority": 0
+			},
+			"dist/seller/index/sellerindex.html": {
+				"resources": [
+					"dist/static/css/iconfont.css",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/css/seller/index/sellerindex.css",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/seller/index/sellerindex.js",
+					"dist/static/js/vendors.js",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/css/jxdd.css",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/imchat/index.html",
+					"dist/buyer/index/index.html",
+					"dist/seller/contract/index.html",
+					"dist/seller/goodsmanage/publishgoods.html",
+					"dist/seller/purchase/index.html",
+					"dist/commonpage/buyinghall/index.html",
+					"dist/seller/goodsmanage/index.html",
+					"dist/seller/supplier/index.html",
+					"dist/seller/supplierservice/index.html",
+					"dist/commonpage/barcodescan/index.html",
+					"dist/seller/bulletin/index.html",
+					"dist/seller/imchat/index.html",
+					"dist/commonpage/search/searchpage.html"
+				],
+				"priority": 0
+			},
+			"dist/buyer/supplier/index.html": {
+				"resources": [
+					"dist/buyer/supplier/productlist.html",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/js/vendors.js",
+					"dist/static/css/buyer/supplier/index.css",
+					"dist/static/js/buyer/supplier/index.js",
+					"dist/static/css/override_mui.css",
+					"dist/static/img/placehold.png",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorMui.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/vendors.dll.js",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/jxdd.css",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/commonpage/login/index.html",
+					"dist/commonpage/search/searchpage.html",
+					"dist/buyer/supplier/product.html"
+				],
+				"priority": 0
+			},
+			"dist/buyer/supplier/productlist.html": {
+				"resources": [
+					"dist/static/css/buyer/supplier/productlist.css",
+					"dist/static/js/buyer/supplier/productlist.js"
+				],
+				"refer": [
+					"dist/buyer/supplier/product.html"
+				],
+				"priority": 0
+			},
+			"dist/buyer/home/releaseBuying.html": {
+				"resources": [
+					"dist/static/css/mui.poppicker.css",
+					"dist/static/js/mui.poppicker.js",
+					"dist/static/js/mui.picker.js",
+					"dist/static/css/mui.picker.css"
+				],
+				"refer": [
+					"dist/buyer/index/index.html"
+				],
+				"priority": 0
+			},
+			"dist/commonpage/error/error_connect.html": {
+				"resources": [
+					"dist/static/css/iconfont.css",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/commonpage/error/error_connect.js",
+					"dist/static/js/vendors.js",
+					"dist/static/css/commonpage/error/error_connect.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/css/jxdd.css",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/buyer/buyinghall/index.html": {
+				"resources": [
+					"dist/buyer/buyinghall/buyinghallcontent.html",
+					"dist/static/css/iconfont.css",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/js/buyer/buyinghall/index.js",
+					"dist/static/css/buyer/buyinghall/index.css",
+					"dist/static/js/vendors.js"
+				],
+				"refer": [
+					"dist/buyer/buyinghall/releasebuying.html",
+					"dist/commonpage/login/index.html",
+					"dist/commonpage/search/searchpage.html"
+				],
+				"priority": 0
+			},
+			"dist/buyer/buyinghall/buyinghallcontent.html": {
+				"resources": [
+					"dist/static/js/buyer/buyinghall/buyinghallcontent.js",
+					"dist/static/css/buyer/buyinghall/buyinghallcontent.css"
+				],
+				"refer": [
+					"dist/commonpage/buying/buyinginfo.html"
+				],
+				"priority": 0
+			},
+			"dist/buyer/buyinghall/releasebuying.html": {
+				"resources": [
+					"dist/static/css/mui.poppicker.css",
+					"dist/static/js/mui.poppicker.js",
+					"dist/static/js/mui.picker.js",
+					"dist/static/css/mui.picker.css",
+					"dist/static/js/buyer/buyinghall/releasebuying.js",
+					"dist/static/css/buyer/buyinghall/releasebuying.css",
+					"dist/static/css/iconfont.css",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css"
+				],
+				"refer": [
+					"dist/buyer/index/index.html"
+				],
+				"priority": 0
+			},
+			"dist/commonpage/login/index.html": {
+				"resources": [
+					"dist/static/css/iconfont.css",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/css/commonpage/login/index.css",
+					"dist/static/css/indexCss.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/commonpage/login/index.js",
+					"dist/static/fonts/mui.ttf",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorMui.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/vendors.dll.js",
+					"dist/static/img/placehold.png",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/jxdd.css",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/commonpage/login/reg.html",
+					"dist/buyer/buyinghall/releasebuying.html",
+					"dist/commonpage/buyinghall/releasebuying.html",
+					"dist/seller/index/sellerindex.html",
+					"dist/buyer/goodslist/goodslist.html",
+					"dist/buyer/supplier/product.html",
+					"dist/buyer/store/index.html",
+					"dist/buyer/homesearch/index.html",
+					"dist/buyer/industry/index.html",
+					"dist/commonpage/search/searchpage.html",
+					"dist/commonpage/login/phoneLogin.html",
+					"dist/buyer/purchase/list.html",
+					"dist/commonpage/login/forgotPassword.html"
+				],
+				"priority": 0
+			},
+			"dist/commonpage/login/reg.html": {
+				"resources": [
+					"dist/static/js/commonpage/login/reg.js",
+					"dist/static/css/commonpage/login/reg.css",
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/js/vendors.js",
+					"dist/static/css/jxdd.css",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/commonpage/login/protocol.html"
+				],
+				"priority": 0
+			},
+			"dist/commonpage/search/searchpage.html": {
+				"resources": [
+					"dist/static/css/commonpage/search/searchpage.css",
+					"dist/static/js/commonpage/search/searchpage.js",
+					"dist/static/css/iconfont.css",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/css/jxdd.css",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/buyer/homesearch/index.html",
+					"dist/buyer/goodslist/goodslist.html",
+					"dist/commonpage/buyinghall/index.html",
+					"dist/seller/imchat/historylist.html"
+				],
+				"priority": 0
+			},
+			"dist/buyer/order/orderlist.html": {
+				"resources": [
+					"dist/static/js/buyer/order/orderlist.js",
+					"dist/static/css/iconfont.css",
+					"dist/static/css/buyer/order/orderlist.css",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css"
+				],
+				"refer": [
+					"dist/commonpage/login/index.html",
+					"dist/buyer/contract/contractsubmit.html"
+				],
+				"priority": 0
+			},
+			"dist/commonpage/goods/goodslist.html": {
+				"resources": [
+					"dist/static/js/commonpage/goods/goodslist.js",
+					"dist/static/css/commonpage/goods/goodslist.css",
+					"dist/static/css/iconfont.css",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css"
+				],
+				"refer": [
+					"dist/buyer/goodslist/goodslist.html",
+					"dist/buyer/supplier/product.html"
+				],
+				"priority": 0
+			},
+			"dist/buyer/activity/index.html": {
+				"resources": [
+					"dist/static/css/buyer/activity/index.css",
+					"dist/static/js/buyer/activity/index.js",
+					"dist/static/css/iconfont.css",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/commonpage/goods/goodslist.html",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/img/placehold.png",
+					"dist/static/css/jxdd.css",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/buyer/supplier/product.html",
+					"dist/commonpage/search/searchpage.html"
+				],
+				"priority": 0
+			},
+			"dist/seller/contract/index.html": {
+				"resources": [
+					"dist/static/css/seller/contract/index.css",
+					"dist/static/js/seller/contract/index.js",
+					"dist/seller/contract/contractlist.html",
+					"dist/static/css/iconfont.css",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/css/jxdd.css",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/commonpage/search/searchpage.html"
+				],
+				"priority": 0
+			},
+			"dist/seller/contract/contractlist.html": {
+				"resources": [
+					"dist/static/css/seller/contract/contractlist.css",
+					"dist/static/js/seller/contract/contractlist.js",
+					"dist/static/css/iconfont.css",
+					"dist/vendorUtils.dll.js",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/static/js/vendors.js",
+					"dist/vendorVue.dll.js",
+					"dist/vendors.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css"
+				],
+				"refer": [
+					"dist/seller/contract/contractdetail.html",
+					"dist/seller/contract/contractdeliver.html",
+					"dist/commonpage/contract/logistics.html"
+				],
+				"priority": 0
+			},
+			"dist/seller/contract/contractdetail.html": {
+				"resources": [
+					"dist/static/js/seller/contract/contractdetail.js",
+					"dist/static/css/seller/contract/contractdetail.css",
+					"dist/vendorUtils.dll.js",
+					"dist/vendors.dll.js"
+				],
+				"refer": [
+					"dist/seller/contract/contractdeliver.html"
+				],
+				"priority": 0
+			},
+			"dist/commonpage/buying/buyinginfo.html": {
+				"resources": [
+					"dist/static/css/commonpage/buying/buyinginfo.css",
+					"dist/static/js/commonpage/buying/buyinginfo.js",
+					"dist/static/css/iconfont.css",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/buyer/goodslist/goodslist.html": {
+				"resources": [
+					"dist/static/js/buyer/goodslist/goodslist.js",
+					"dist/static/css/buyer/goodslist/goodslist.css",
+					"dist/static/css/buyer/goodslist/goodslist.css.map",
+					"dist/static/js/buyer/goodslist/goodslist.js.map",
+					"dist/static/css/iconfont.css",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/js/vendors.js.map",
+					"dist/static/fonts/mui.ttf",
+					"dist/commonpage/goods/goodslist.html",
+					"dist/static/img/placehold.png",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/css/jxdd.css",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/buyer/index/index.html",
+					"dist/buyer/supplier/product.html"
+				],
+				"priority": 0
+			},
+			"dist/seller/goodsmanage/publishgoods.html": {
+				"resources": [
+					"dist/static/css/seller/goodsmanage/publishgoods.css",
+					"dist/commonpage/goods/goodslist.html",
+					"dist/static/js/seller/goodsmanage/publishgoods.js",
+					"dist/static/css/iconfont.css",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/css/seller/goodsmanage/publishgoods.css.map",
+					"dist/static/js/seller/goodsmanage/publishgoods.js.map",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/img/placehold.png",
+					"dist/static/css/jxdd.css",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/buyer/supplier/product.html": {
+				"resources": [
+					"dist/static/css/buyer/supplier/product.css",
+					"dist/static/js/buyer/supplier/product.js",
+					"dist/buyer/supplier/productdetail.html",
+					"dist/static/css/iconfont.css",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/vendorMui.dll.js",
+					"dist/static/img/placehold.png",
+					"dist/vendors.dll.js",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/jxdd.css",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/commonpage/login/index.html",
+					"dist/buyer/store/index.html",
+					"dist/buyer/order/goodsjumporder.html"
+				],
+				"priority": 0
+			},
+			"dist/buyer/supplier/productdetail.html": {
+				"resources": [
+					"dist/static/css/buyer/supplier/productdetail.css",
+					"dist/static/js/buyer/supplier/productdetail.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/js/vendors.js",
+					"dist/static/css/jxdd.css",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/seller/purchase/index.html": {
+				"resources": [
+					"dist/static/css/iconfont.css",
+					"dist/static/js/seller/purchase/index.js",
+					"dist/static/css/seller/purchase/index.css",
+					"dist/static/js/vendors.js",
+					"dist/seller/purchase/purchaselist.html",
+					"dist/static/css/mui.min.css",
+					"dist/static/js/mui.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/seller/purchase/purchaselist.html": {
+				"resources": [
+					"dist/static/js/seller/purchase/purchaselist.js",
+					"dist/static/css/seller/purchase/purchaselist.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/buyer/contract/contractlist.html": {
+				"resources": [
+					"dist/static/js/buyer/contract/contractlist.js",
+					"dist/static/css/buyer/contract/contractlist.css",
+					"dist/vendorMui.dll.js"
+				],
+				"refer": [
+					"dist/buyer/contract/contractdetail.html",
+					"dist/commonpage/contract/logistics.html",
+					"dist/buyer/contract/selectpaytype.html"
+				],
+				"priority": 0
+			},
+			"dist/buyer/contract/index.html": {
+				"resources": [
+					"dist/buyer/contract/contractlist.html",
+					"dist/static/js/buyer/contract/index.js",
+					"dist/static/css/buyer/contract/index.css",
+					"dist/static/css/iconfont.css",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/css/jxdd.css",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/commonpage/search/searchpage.html"
+				],
+				"priority": 0
+			},
+			"dist/buyer/type/index.html": {
+				"resources": [
+					"dist/static/css/iconfont.css",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/static/css/buyer/type/index.css",
+					"dist/static/js/buyer/type/index.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css"
+				],
+				"refer": [
+					"dist/buyer/goodslist/goodslist.html",
+					"dist/commonpage/error/error_connect.html"
+				],
+				"priority": 0
+			},
+			"dist/buyer/mine/usersetting.html": {
+				"resources": [
+					"dist/static/js/mui.pullToRefresh.material.js",
+					"dist/static/js/mui.pullToRefresh.js",
+					"dist/static/js/buyer/mine/usersetting.js",
+					"dist/static/css/buyer/mine/usersetting.css",
+					"dist/static/css/iconfont.css",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/img/placehold.png",
+					"dist/static/css/jxdd.css",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/buyer/usersetting/edituserdata.html",
+					"dist/buyer/usersetting/aboutus.html",
+					"dist/buyer/usersetting/legaldeclaration.html",
+					"dist/buyer/usersetting/serviceagreement.html"
+				],
+				"priority": 0
+			},
+			"dist/buyer/usersetting/edituserdata.html": {
+				"resources": [
+					"dist/static/js/buyer/usersetting/edituserdata.js",
+					"dist/static/css/buyer/usersetting/edituserdata.css",
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/js/vendors.js",
+					"dist/static/css/jxdd.css",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/buyer/edituserdata/modifypassword.html"
+				],
+				"priority": 0
+			},
+			"dist/buyer/mine/myhistory.html": {
+				"resources": [
+					"dist/static/css/buyer/mine/myhistory.css",
+					"dist/static/js/mui.pullToRefresh.material.js",
+					"dist/static/css/iconfont.css",
+					"dist/static/js/mui.pullToRefresh.js",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/buyer/mine/myhistory.js",
+					"dist/static/js/vendors.js",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/pull_to_refresh.css",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/css/jxdd.css",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/buyer/supplier/product.html"
+				],
+				"priority": 0
+			},
+			"dist/buyer/mine/feedback.html": {
+				"resources": [
+					"dist/static/js/mui.pullToRefresh.material.js",
+					"dist/static/css/buyer/mine/feedback.css",
+					"dist/static/css/iconfont.css",
+					"dist/static/js/mui.pullToRefresh.js",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/buyer/mine/feedback.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/css/jxdd.css",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/commonpage/buyinghall/buyinghallcontent.html": {
+				"resources": [
+					"dist/static/js/commonpage/buyinghall/buyinghallcontent.js",
+					"dist/static/css/commonpage/buyinghall/buyinghallcontent.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/commonpage/buyinghall/index.html": {
+				"resources": [
+					"dist/commonpage/buyinghall/buyinghallcontent.html",
+					"dist/static/css/commonpage/buyinghall/index.css",
+					"dist/static/css/iconfont.css",
+					"dist/static/js/commonpage/buyinghall/index.js",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/img/placehold.png",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorMui.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/vendors.dll.js",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/jxdd.css",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/commonpage/login/index.html",
+					"dist/commonpage/buyinghall/releasebuying.html",
+					"dist/commonpage/search/searchpage.html",
+					"dist/commonpage/buyinghall/buyinginfo.html",
+					"dist/buyer/purchase/list.html"
+				],
+				"priority": 0
+			},
+			"dist/commonpage/buyinghall/releasebuying.html": {
+				"resources": [
+					"dist/static/js/commonpage/buyinghall/releasebuying.js",
+					"dist/static/css/commonpage/buyinghall/releasebuying.css",
+					"dist/static/css/mui.poppicker.css",
+					"dist/static/js/mui.poppicker.js",
+					"dist/static/js/mui.picker.js",
+					"dist/static/css/mui.picker.css",
+					"dist/static/css/iconfont.css",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/jxdd.css",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/buyer/contract/contractsubmit.html": {
+				"resources": [
+					"dist/static/css/buyer/contract/contractsubmit.css",
+					"dist/static/js/buyer/contract/contractsubmit.js",
+					"dist/static/css/iconfont.css",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/css/jxdd.css",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/buyer/supplier/productdetail.html",
+					"dist/buyer/store/index.html",
+					"dist/commonpage/address/index.html",
+					"dist/buyer/contract/selectpaytype.html",
+					"dist/commonpage/address/addoredit.html"
+				],
+				"priority": 0
+			},
+			"dist/buyer/homesearch/searchgoods.html": {
+				"resources": [
+					"dist/commonpage/goods/goodslist.html",
+					"dist/static/css/buyer/homesearch/searchgoods.css",
+					"dist/static/js/buyer/homesearch/searchgoods.js"
+				],
+				"refer": [
+					"dist/buyer/supplier/product.html"
+				],
+				"priority": 0
+			},
+			"dist/buyer/homesearch/index.html": {
+				"resources": [
+					"dist/static/css/buyer/homesearch/index.css",
+					"dist/static/css/iconfont.css",
+					"dist/static/js/buyer/homesearch/index.js",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/buyer/homesearch/searchstore.html",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/css/jxdd.css",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/buyer/homesearch/searchgoods.html",
+					"dist/commonpage/search/searchpage.html",
+					"dist/buyer/goodslist/goodslist.html",
+					"dist/buyer/store/index.html",
+					"dist/buyer/supplier/product.html"
+				],
+				"priority": 0
+			},
+			"dist/buyer/homesearch/searchstore.html": {
+				"resources": [
+					"dist/static/css/buyer/homesearch/searchstore.css",
+					"dist/static/js/buyer/homesearch/searchstore.js",
+					"dist/static/css/iconfont.css",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css"
+				],
+				"refer": [
+					"dist/buyer/store/index.html"
+				],
+				"priority": 0
+			},
+			"dist/commonpage/address/index.html": {
+				"resources": [
+					"dist/static/js/commonpage/address/index.js",
+					"dist/static/css/commonpage/address/index.css",
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/js/vendors.js",
+					"dist/static/img/placehold.png",
+					"dist/static/css/jxdd.css",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/commonpage/address/addoredit.html"
+				],
+				"priority": 0
+			},
+			"dist/buyer/industry/index.html": {
+				"resources": [
+					"dist/static/js/buyer/industry/index.js",
+					"dist/static/css/buyer/industry/index.css",
+					"dist/static/js/vendors.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/jxdd.css",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/buyer/store/index.html": {
+				"resources": [
+					"dist/static/js/buyer/store/index.js",
+					"dist/static/css/iconfont.css",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/buyer/store/index.css",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/css/buyer/store/index.css.map",
+					"dist/static/js/buyer/store/index.js.map",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/img/placehold.png",
+					"dist/static/css/jxdd.css",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/commonpage/search/searchpage.html",
+					"dist/buyer/supplier/product.html",
+					"dist/buyer/store/storeinfo.html",
+					"dist/buyer/homesearch/index.html"
+				],
+				"priority": 0
+			},
+			"dist/commonpage/buyinghall/buyinginfo.html": {
+				"resources": [
+					"dist/static/js/commonpage/buyinghall/buyinginfo.js",
+					"dist/static/css/commonpage/buyinghall/buyinginfo.css",
+					"dist/static/css/iconfont.css",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/css/jxdd.css",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/seller/goodsmanage/index.html": {
+				"resources": [
+					"dist/static/js/mui.pullToRefresh.material.js",
+					"dist/static/js/seller/goodsmanage/index.js",
+					"dist/static/js/mui.pullToRefresh.js",
+					"dist/static/css/mui.poppicker.css",
+					"dist/static/js/mui.poppicker.js",
+					"dist/static/js/mui.picker.js",
+					"dist/static/css/seller/goodsmanage/index.css",
+					"dist/static/css/pull_to_refresh.css",
+					"dist/static/css/mui.picker.css",
+					"dist/static/css/iconfont.css",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/css/jxdd.css",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/commonpage/search/searchpage.html",
+					"dist/seller/goodsmanage/publishgoods.html",
+					"dist/buyer/supplier/productdetail.html"
+				],
+				"priority": 0
+			},
+			"dist/buyer/myfavorite/supplierlist.html": {
+				"resources": [
+					"dist/static/js/buyer/myfavorite/supplierlist.js",
+					"dist/static/css/buyer/myfavorite/supplierlist.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/buyer/myfavorite/index.html": {
+				"resources": [
+					"dist/static/css/buyer/myfavorite/index.css",
+					"dist/static/js/buyer/myfavorite/index.js",
+					"dist/buyer/myfavorite/goodslist.html",
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/pull_to_refresh.css",
+					"dist/static/js/mui.pullToRefresh.js",
+					"dist/static/js/mui.pullToRefresh.material.js",
+					"dist/static/js/vendors.js",
+					"dist/static/css/jxdd.css",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/buyer/myfavorite/supplierlist.html",
+					"dist/buyer/store/index.html",
+					"dist/buyer/supplier/product.html"
+				],
+				"priority": 0
+			},
+			"dist/buyer/myfavorite/goodslist.html": {
+				"resources": [
+					"dist/static/js/buyer/myfavorite/goodslist.js",
+					"dist/static/css/buyer/myfavorite/goodslist.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/seller/supplier/index.html": {
+				"resources": [
+					"dist/static/js/seller/supplier/index.js",
+					"dist/static/css/seller/supplier/index.css",
+					"dist/seller/supplier/infolist.html",
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/js/vendors.js",
+					"dist/static/img/placehold.png",
+					"dist/static/css/jxdd.css",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/seller/supplier/productlistindex.html"
+				],
+				"priority": 0
+			},
+			"dist/seller/supplier/infolist.html": {
+				"resources": [
+					"dist/static/js/seller/supplier/infolist.js",
+					"dist/static/css/seller/supplier/infolist.css",
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/js/vendors.js"
+				],
+				"refer": [
+					"dist/buyer/supplier/productdetail.html"
+				],
+				"priority": 0
+			},
+			"dist/buyer/index/guide.html": {
+				"resources": [
+					"dist/static/css/buyer/index/guide.css",
+					"dist/static/js/buyer/index/guide.js",
+					"dist/static/js/buyer/index/guide.js.map",
+					"dist/static/css/buyer/index/guide.css.map",
+					"dist/static/img/guide-3.jpg",
+					"dist/static/img/guide-2.jpg",
+					"dist/static/img/guide-1.jpg",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/vendors.js"
+				],
+				"refer": [
+					"dist/buyer/index/main.html"
+				],
+				"priority": 0
+			},
+			"dist/buyer/index/main.html": {
+				"resources": [
+					"dist/static/css/buyer/index/main.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/js/buyer/index/main.js",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/buyer/index/main.css.map",
+					"dist/static/img/placehold.png",
+					"dist/static/css/mui.min.css",
+					"dist/static/css/iconfont.css",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/js/vendors.js",
+					"dist/static/fonts/jxdd.ttf"
+				],
+				"refer": [
+					"dist/buyer/supplier/index.html",
+					"dist/commonpage/buyinghall/index.html",
+					"dist/buyer/supplier/product.html",
+					"dist/buyer/activity/index.html",
+					"dist/commonpage/login/index.html",
+					"dist/buyer/goodslist/goodslist.html",
+					"dist/commonpage/search/searchpage.html",
+					"dist/seller/index/sellerindex.html",
+					"dist/buyer/mine/usersetting.html",
+					"dist/commonpage/barcodescan/index.html",
+					"dist/buyer/industry/index.html",
+					"dist/buyer/mine/myhistory.html",
+					"dist/buyer/contract/contractsubmit.html",
+					"dist/buyer/homesearch/index.html",
+					"dist/buyer/contract/index.html",
+					"dist/buyer/store/index.html",
+					"dist/buyer/myfavorite/index.html",
+					"dist/buyer/purchase/list.html",
+					"dist/buyer/mine/feedback.html",
+					"dist/commonpage/address/index.html",
+					"dist/seller/imchat/index.html"
+				],
+				"priority": 0
+			},
+			"dist/commonpage/barcodescan/index.html": {
+				"resources": [
+					"dist/static/css/commonpage/barcodescan/index.css",
+					"dist/static/css/iconfont.css",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorMui.dll.js",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/commonpage/barcodescan/index.js",
+					"dist/vendors.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/img/placehold.png",
+					"dist/static/css/jxdd.css",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/buyer/store/index.html",
+					"dist/buyer/supplier/product.html"
+				],
+				"priority": 0
+			},
+			"dist/seller/supplierservice/index.html": {
+				"resources": [
+					"dist/static/css/seller/supplierservice/index.css",
+					"dist/static/js/seller/supplierservice/index.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/js/vendors.js",
+					"dist/static/img/placehold.png",
+					"dist/static/css/jxdd.css",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/seller/supplierservice/guidedetail.html"
+				],
+				"priority": 0
+			},
+			"dist/seller/supplierservice/guidedetail.html": {
+				"resources": [
+					"dist/static/js/seller/supplierservice/guidedetail.js",
+					"dist/static/css/seller/supplierservice/guidedetail.css",
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/js/vendors.js",
+					"dist/static/css/jxdd.css",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/commonpage/login/phoneLogin.html": {
+				"href": "dist/commonpage/login/phoneLogin.html",
+				"resources": [
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/commonpage/login/phoneLogin.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/commonpage/login/phoneLogin.js"
+				],
+				"priority": 1,
+				"refer": [
+					"dist/buyer/purchase/list.html"
+				]
+			},
+			"dist/commonpage/login/forgotPassword.html": {
+				"href": "dist/commonpage/login/forgotPassword.html",
+				"resources": [
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/commonpage/login/forgotPassword.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/commonpage/login/forgotPassword.js",
+					"dist/static/css/jxdd.css",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/static/css/jxddadd.css"
+				],
+				"priority": 2,
+				"refer": []
+			},
+			"dist/commonpage/login/protocol.html": {
+				"href": "dist/commonpage/login/protocol.html",
+				"resources": [
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/commonpage/login/protocol.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/commonpage/login/protocol.js"
+				],
+				"priority": 4,
+				"refer": []
+			},
+			"dist/commonpage/login/setPassword.html": {
+				"href": "dist/commonpage/login/setPassword.html",
+				"resources": [
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/commonpage/login/setPassword.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/commonpage/login/setPassword.js"
+				],
+				"priority": 6
+			},
+			"dist/commonpage/address/addoredit.html": {
+				"href": "dist/commonpage/address/addoredit.html",
+				"resources": [
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.picker.css",
+					"dist/static/css/mui.poppicker.css",
+					"dist/static/js/mui.picker.js",
+					"dist/static/js/mui.poppicker.js",
+					"dist/static/css/commonpage/address/addoredit.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/commonpage/address/addoredit.js",
+					"dist/static/img/placehold.png",
+					"dist/static/css/jxdd.css",
+					"dist/static/css/jxddadd.css"
+				],
+				"priority": 10,
+				"refer": []
+			},
+			"dist/buyer/contract/selectpaytype.html": {
+				"href": "dist/buyer/contract/selectpaytype.html",
+				"resources": [
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/buyer/contract/selectpaytype.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/buyer/contract/selectpaytype.js",
+					"dist/static/css/jxdd.css",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/buyer/contract/index.html"
+				],
+				"priority": 12
+			},
+			"dist/buyer/usersetting/aboutus.html": {
+				"href": "dist/buyer/usersetting/aboutus.html",
+				"resources": [
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/buyer/usersetting/aboutus.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/buyer/usersetting/aboutus.js",
+					"dist/static/img/placehold.png",
+					"dist/static/css/jxdd.css",
+					"dist/static/fonts/jxdd.ttf"
+				],
+				"priority": 19,
+				"refer": []
+			},
+			"dist/buyer/usersetting/legaldeclaration.html": {
+				"href": "dist/buyer/usersetting/legaldeclaration.html",
+				"resources": [
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/buyer/usersetting/legaldeclaration.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/buyer/usersetting/legaldeclaration.js"
+				],
+				"priority": 20
+			},
+			"dist/buyer/usersetting/serviceagreement.html": {
+				"href": "dist/buyer/usersetting/serviceagreement.html",
+				"resources": [
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/buyer/usersetting/serviceagreement.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/buyer/usersetting/serviceagreement.js"
+				],
+				"priority": 21
+			},
+			"dist/buyer/purchase/list.html": {
+				"href": "dist/buyer/purchase/list.html",
+				"resources": [
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/buyer/purchase/list.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/buyer/purchase/list.js",
+					"dist/static/css/jxdd.css",
+					"dist/static/css/jxddadd.css"
+				],
+				"priority": 20,
+				"refer": [
+					"dist/buyer/purchase/purchasedetail.html",
+					"dist/commonpage/buyinghall/releasebuying.html"
+				]
+			},
+			"dist/buyer/edituserdata/modifypassword.html": {
+				"href": "dist/buyer/edituserdata/modifypassword.html",
+				"resources": [
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/indexCss.css",
+					"dist/static/css/buyer/edituserdata/modifypassword.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/buyer/edituserdata/modifypassword.js"
+				],
+				"priority": 8,
+				"refer": []
+			},
+			"dist/seller/bulletin/index.html": {
+				"href": "dist/seller/bulletin/index.html",
+				"resources": [
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/pull_to_refresh.css",
+					"dist/static/js/mui.pullToRefresh.js",
+					"dist/static/js/mui.pullToRefresh.material.js",
+					"dist/static/css/seller/bulletin/index.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/seller/bulletin/index.js",
+					"dist/static/img/placehold.png",
+					"dist/static/css/jxdd.css",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/seller/bulletin/offline.html",
+					"dist/static/css/jxddadd.css"
+				],
+				"priority": 12,
+				"refer": [
+					"dist/seller/bulletin/detail.html",
+					"dist/commonpage/search/searchpage.html"
+				]
+			},
+			"dist/seller/supplier/productlistindex.html": {
+				"href": "dist/seller/supplier/productlistindex.html",
+				"resources": [
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.picker.css",
+					"dist/static/css/mui.poppicker.css",
+					"dist/static/css/pull_to_refresh.css",
+					"dist/static/js/mui.picker.js",
+					"dist/static/js/mui.poppicker.js",
+					"dist/static/js/mui.pullToRefresh.js",
+					"dist/static/js/mui.pullToRefresh.material.js",
+					"dist/static/css/seller/supplier/productlistindex.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/seller/supplier/productlistindex.js",
+					"dist/static/css/jxdd.css"
+				],
+				"refer": [
+					"dist/seller/goodsmanage/publishgoods.html",
+					"dist/buyer/supplier/productdetail.html"
+				],
+				"priority": 15
+			},
+			"dist/seller/imchat/selectuser.html": {
+				"href": "dist/seller/imchat/selectuser.html",
+				"resources": [
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/seller/imchat/selectuser.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/seller/imchat/selectuser.js"
+				],
+				"priority": 17
+			},
+			"dist/seller/imchat/index.html": {
+				"href": "dist/seller/imchat/index.html",
+				"resources": [
+					"dist/static/js/arttmpl.js",
+					"dist/static/js/socket.io.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/seller/imchat/index.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/seller/imchat/index.js",
+					"dist/static/css/jxdd.css",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/buyer/store/index.html",
+					"dist/seller/imchat/selectuser.html",
+					"dist/commonpage/search/searchpage.html"
+				],
+				"priority": 16
+			},
+			"dist/buyer/edituserdata/modifybindingphone.html": {
+				"href": "dist/buyer/edituserdata/modifybindingphone.html",
+				"resources": [
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/buyer/edituserdata/modifybindingphone.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/buyer/edituserdata/modifybindingphone.js"
+				],
+				"priority": 11
+			},
+			"dist/commonpage/login/setlogin.html": {
+				"href": "dist/commonpage/login/setlogin.html",
+				"resources": [
+					"dist/static/css/mui.min.css",
+					"dist/static/fonts/mui.ttf",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/iconfont.ttf",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/img/placehold.png",
+					"dist/static/js/mui.js",
+					"dist/static/css/commonpage/login/setlogin.css",
+					"dist/static/js/vendors.js",
+					"dist/static/js/commonpage/login/setlogin.js"
+				],
+				"refer": [
+					"dist/commonpage/search/searchpage.html",
+					"dist/commonpage/login/phoneLogin.html",
+					"dist/commonpage/login/forgotPassword.html",
+					"dist/commonpage/login/setlogin.html",
+					"dist/commonpage/login/protocol.html",
+					"dist/commonpage/error/error_connect.html",
+					"dist/commonpage/login/setPassword.html",
+					"dist/buyer/index/main.html",
+					"dist/buyer/edituserdata/modifypassword.html",
+					"dist/seller/index/sellerindex.html",
+					"dist/commonpage/login/reg.html",
+					"dist/buyer/edituserdata/modifybindingphone.html",
+					"dist/commonpage/login/index.html"
+				],
+				"priority": 0
+			},
+			"dist/buyer/contract/contractdetail.html": {
+				"resources": [
+					"dist/static/js/buyer/contract/contractdetail.js",
+					"dist/static/css/buyer/contract/contractdetail.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/buyer/order/goodsjumporder.html": {
+				"resources": [
+					"dist/static/js/buyer/order/goodsjumporder.js",
+					"dist/static/css/buyer/order/goodsjumporder.css",
+					"dist/static/css/iconfont.css",
+					"dist/static/css/jxdd.css",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorMui.dll.js",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/vendorVue.dll.js",
+					"dist/vendors.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [
+					"dist/buyer/supplier/product.html",
+					"dist/buyer/contract/contractsubmit.html",
+					"dist/buyer/store/index.html"
+				],
+				"priority": 0
+			},
+			"dist/buyer/store/storeinfo.html": {
+				"resources": [
+					"dist/static/js/buyer/store/storeinfo.js",
+					"dist/static/css/buyer/store/storeinfo.css",
+					"dist/static/css/jxdd.css",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/vendorUtils.dll.js",
+					"dist/static/js/vendors.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/js/mui.js",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/static/fonts/mui.ttf",
+					"dist/vendors.dll.js",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/commonpage/contract/logistics.html": {
+				"resources": [
+					"dist/static/js/commonpage/contract/logistics.js",
+					"dist/static/css/commonpage/contract/logistics.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/seller/bulletin/detail.html": {
+				"resources": [
+					"dist/static/css/seller/bulletin/detail.css",
+					"dist/static/js/seller/bulletin/detail.js",
+					"dist/static/css/iconfont.css",
+					"dist/static/css/jxdd.css",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorMui.dll.js",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/vendorVue.dll.js",
+					"dist/vendors.dll.js",
+					"dist/static/css/jxddadd.css",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/buyer/purchase/purchasedetail.html": {
+				"resources": [
+					"dist/static/css/iconfont.css",
+					"dist/static/css/jxdd.css",
+					"dist/static/css/buyer/purchase/purchasedetail.css",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorMui.dll.js",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/buyer/purchase/purchasedetail.js",
+					"dist/static/js/vendors.js",
+					"dist/vendorVue.dll.js",
+					"dist/vendors.dll.js",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css",
+					"dist/static/css/jxddadd.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/seller/bulletin/offline.html": {
+				"resources": [
+					"dist/static/css/seller/bulletin/offline.css",
+					"dist/static/js/seller/bulletin/offline.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/seller/imchat/historylist.html": {
+				"resources": [
+					"dist/static/css/seller/imchat/historylist.css",
+					"dist/static/js/seller/imchat/historylist.js"
+				],
+				"refer": [
+					"dist/seller/imchat/historyresult.html"
+				],
+				"priority": 0
+			},
+			"dist/seller/imchat/historyresult.html": {
+				"resources": [
+					"dist/static/js/seller/imchat/historyresult.js",
+					"dist/static/css/iconfont.css",
+					"dist/static/css/jxdd.css",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorMui.dll.js",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/vendorVue.dll.js",
+					"dist/vendors.dll.js",
+					"dist/static/css/seller/imchat/historyresult.css",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/seller/contract/contractdeliver.html": {
+				"resources": [
+					"dist/static/js/seller/contract/contractdeliver.js",
+					"dist/static/css/seller/contract/contractdeliver.css",
+					"dist/static/css/jxdd.css",
+					"dist/static/css/iconfont.css",
+					"dist/vendorUtils.dll.js",
+					"dist/static/js/vendors.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/css/jxddadd.css",
+					"dist/static/css/mui.min.css",
+					"dist/static/js/mui.js",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js"
+				],
+				"refer": [
+					"dist/seller/contract/contractbuyer.html",
+					"dist/commonpage/selector/logistics.html",
+					"dist/seller/contract/contractseller.html"
+				],
+				"priority": 0
+			},
+			"dist/seller/contract/contractbuyer.html": {
+				"resources": [
+					"dist/static/js/seller/contract/contractbuyer.js",
+					"dist/static/css/mui.poppicker.css",
+					"dist/static/css/seller/contract/contractbuyer.css",
+					"dist/static/js/mui.poppicker.js",
+					"dist/static/js/mui.picker.js",
+					"dist/static/css/mui.picker.css",
+					"dist/static/css/jxdd.css",
+					"dist/static/css/iconfont.css",
+					"dist/static/fonts/jxdd.ttf",
+					"dist/vendorUtils.dll.js",
+					"dist/static/js/vendors.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/css/jxddadd.css",
+					"dist/static/css/mui.min.css",
+					"dist/static/js/mui.js",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js"
+				],
+				"refer": [
+					"dist/seller/contract/contractdeliver.html"
+				],
+				"priority": 0
+			},
+			"dist/commonpage/selector/logistics.html": {
+				"resources": [
+					"dist/static/css/jxdd.css",
+					"dist/static/css/iconfont.css",
+					"dist/vendorUtils.dll.js",
+					"dist/static/js/vendors.js",
+					"dist/vendorVue.dll.js",
+					"dist/static/css/jxddadd.css",
+					"dist/static/css/mui.min.css",
+					"dist/static/js/mui.js",
+					"dist/static/css/commonpage/selector/logistics.css",
+					"dist/static/js/commonpage/selector/logistics.js",
+					"dist/static/css/override_mui.css",
+					"dist/vendorMui.dll.js",
+					"dist/vendors.dll.js"
+				],
+				"refer": [
+					"dist/commonpage/barcode/barcode.html"
+				],
+				"priority": 0
+			},
+			"dist/commonpage/barcode/barcode.html": {
+				"resources": [
+					"dist/static/js/commonpage/barcode/barcode.js",
+					"dist/static/css/commonpage/barcode/barcode.css",
+					"dist/static/css/iconfont.css",
+					"dist/static/css/jxdd.css",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorMui.dll.js",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/vendorVue.dll.js",
+					"dist/vendors.dll.js",
+					"dist/static/css/jxddadd.css",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/seller/contract/contractseller.html": {
+				"resources": [
+					"dist/static/css/iconfont.css",
+					"dist/static/css/jxdd.css",
+					"dist/static/css/seller/contract/contractseller.css",
+					"dist/vendorUtils.dll.js",
+					"dist/static/js/seller/contract/contractseller.js",
+					"dist/vendorMui.dll.js",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/vendors.js",
+					"dist/vendorVue.dll.js",
+					"dist/vendors.dll.js",
+					"dist/static/css/jxddadd.css",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css"
+				],
+				"refer": [
+					"dist/seller/contract/contractdeliver.html"
+				],
+				"priority": 0
+			},
+			"dist/commonpage/index/index.html": {
+				"resources": [
+					"dist/static/css/iconfont.css",
+					"dist/static/css/jxdd.css",
+					"dist/vendorUtils.dll.js",
+					"dist/vendorMui.dll.js",
+					"dist/static/css/override_mui.css",
+					"dist/static/js/commonpage/index/index.js",
+					"dist/static/js/vendors.js",
+					"dist/vendorVue.dll.js",
+					"dist/vendors.dll.js",
+					"dist/static/css/jxddadd.css",
+					"dist/static/js/mui.js",
+					"dist/static/css/mui.min.css"
+				],
+				"refer": [
+					"dist/commonpage/index/main.html",
+					"dist/commonpage/index/guide.html"
+				],
+				"priority": 0
+			},
+			"dist/commonpage/index/main.html": {
+				"resources": [
+					"dist/static/fonts/jxdd.ttf",
+					"dist/static/js/commonpage/index/main.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/commonpage/index/guide.html": {
+				"resources": [
+					"dist/static/css/commonpage/index/guide.css",
+					"dist/static/img/guide-3.jpg",
+					"dist/static/img/guide-2.jpg",
+					"dist/static/img/guide-1.jpg",
+					"dist/static/js/commonpage/index/guide.js"
+				],
+				"refer": [],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"dist/static/img/mine/address.svg",
+				"dist/static/img/help_image/publish1-3.png",
+				"dist/vendors-mainfest.json",
+				"dist/static/js/buyer/contract/contractevaluate.js",
+				"dist/static/img/mine/buxing.svg",
+				"dist/static/css/mui.css",
+				"dist/static/img/help_image/buyinghall2-2.png",
+				"dist/static/img/help_image/order4-2.png",
+				"dist/static/img/help_image/supplying1-1.png",
+				"dist/static/img/help_image/ship1-4.png",
+				"dist/static/img/help_image/publish1-13.png",
+				"dist/static/img/help_image/order3-1.png",
+				"README.md",
+				"dist/static/img/scan.png",
+				"dist/vendorVue-mainfest.json",
+				"dist/static/img/reset.svg",
+				"dist/static/js/mui.indexedlist.js",
+				"dist/static/img/bank.png",
+				"dist/static/img/address-border.png",
+				"dist/vendorUtils-mainfest.json",
+				"dist/static/js/mui.lazyload.img.js",
+				"dist/static/img/help_image/order1-1.png",
+				"dist/static/img/user.png",
+				"dist/static/img/help_image/publish1-11.png",
+				"dist/static/js/mui.imageViewer.js",
+				"dist/static/img/help_image/publish1-10.png",
+				"dist/static/img/empty.png",
+				"dist/static/img/bg1.png",
+				"dist/static/img/help_image/ship1-2.png",
+				"dist/vendorMui-mainfest.json",
+				"dist/static/img/help_image/publish1-2.png",
+				"dist/static/css/mui.imageviewer.css",
+				"dist/static/img/help_image/ship1-1.png",
+				"dist/buyer/contract/contractevaluate.html",
+				"dist/static/img/help_image/publish1-7.png",
+				"dist/static/img/help_image/publish1-12.png",
+				"dist/static/img/star.png",
+				"dist/static/img/help_image/buyinghall1-1.png",
+				"dist/static/img/help_image/buyinghall2-1.png",
+				"dist/static/img/help_image/order3-6.png",
+				"dist/static/css/seller/purchase/purchasedetail.css",
+				"dist/static/img/logo.png",
+				"dist/static/img/express_default.png",
+				"dist/static/img/help_image/ship1-2.1.png",
+				"dist/static/css/buyer/contract/contractevaluate.css",
+				"dist/static/img/help_image/buyinghall3-1.png",
+				"dist/static/img/help_image/order6-1.png",
+				"dist/static/img/help_image/supplying1-4.png",
+				"dist/static/css/mui.picker.min.css",
+				"dist/static/img/help_image/order6-5.png",
+				"dist/static/img/bg.png",
+				"dist/static/img/mine/diejia.svg",
+				"dist/static/img/jxddswzx.png",
+				"dist/static/img/help_image/order6-3.png",
+				"dist/static/img/help_image/order3-2.png",
+				"dist/static/img/help_image/publish1-8.png",
+				"dist/static/img/flash-off.svg",
+				"dist/static/img/help_image/ship1-3.png",
+				"dist/static/img/help_image/supplying2-1.png",
+				"dist/static/img/mine/infotip.svg",
+				"dist/static/img/help_image/publish1-9.png",
+				"dist/static/css/imgpreview.css",
+				"dist/static/img/help_image/order6-4.png",
+				"dist/static/img/help_image/publish1-3.1.png",
+				"dist/static/img/help_image/order3-5.png",
+				"dist/static/img/help_image/supplying2-0.png",
+				"dist/static/img/help_image/buyinghall1-0.png",
+				"dist/static/img/upload_empty.jpg",
+				"dist/static/img/help_image/publish1-14.png",
+				"dist/static/img/address/radio-check.svg",
+				"dist/static/img/help_image/publish1-1.png",
+				"dist/static/img/custom.jpg",
+				"dist/static/img/scan.svg",
+				"dist/static/js/seller/purchase/purchasedetail.js",
+				"dist/static/img/flash-on.svg",
+				"dist/static/img/help_image/buyinghall3-2.png",
+				"dist/static/img/help_image/supplying1-3.png",
+				"dist/static/img/help_image/buyinghall4-1.png",
+				"dist/static/js/mui.lazyload.js",
+				"dist/static/img/help_image/buyinghall3-3.png",
+				"dist/static/img/help_image/publish1-5.png",
+				"dist/static/img/help_image/buyinghall4-2.png",
+				"dist/static/img/help_image/order3-4.png",
+				"dist/static/img/mine/nohp.png",
+				"dist/static/img/star-click.png",
+				"dist/static/js/mui.zoom.js",
+				"dist/static/img/help_image/order6-2.png",
+				"dist/static/js/mui.previewimage.js",
+				"dist/static/img/help_image/buyinghall4-3.png",
+				"dist/static/img/help_image/supplying1-2.png",
+				"dist/static/img/help_image/publish1-4.png",
+				"dist/static/img/nonetwork.svg",
+				"dist/static/img/help_image/order4-1.png",
+				"dist/seller/purchase/purchasedetail.html",
+				"dist/static/img/help_image/publish1-6.png",
+				"dist/static/img/help_image/order3-3.png",
+				"dist/static/img/address/radio-notCheck.svg"
+			]
+		}
+	},
+    "fullscreen": false,
+	"unpackage":[
+	  "README.md"
+	]
+}

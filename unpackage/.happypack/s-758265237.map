@@ -1,0 +1,1 @@
+{"version":3,"sources":["src\\api\\domain.js"],"names":["API_ROOT"],"mappings":"AAAA;;;;;AAEO,IAAMA,8BAAW,kBAAjB","file":"domain.js","sourceRoot":"C:/Users/dell/AppData/Roaming/HBuilder/userprofiles/18710095921@163.com/appTemplate/unpackage","sourcesContent":["'use strict';\r\n\r\nexport const API_ROOT = 'http://localhost';"]}

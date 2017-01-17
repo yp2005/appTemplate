@@ -1,0 +1,39 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.IMGURL = exports.IMCHAT_UPLOAD = exports.IMCHAT_HISTORY = exports.IMCHAT = exports.PAYMENT = exports.STOREAPI = exports.PRODUCTAPI = exports.ORDERAPI = exports.MEMBERAPI = exports.MARKETAPI = exports.COMMONAPI = exports.SSO_DOMAIN = exports.STATIC_DOMAIN = exports.COOKIEDOMAIN = exports.API_ROOT = undefined;
+
+var _propUtils = require('common/propUtils');
+
+var _propUtils2 = _interopRequireDefault(_propUtils);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var API_ROOT = exports.API_ROOT = process.env.NODE_ENV === 'production' ? 'http://192.168.10.67:8081/Site-api/rest' : 'http://192.168.2.98:8080';
+
+var COOKIEDOMAIN = exports.COOKIEDOMAIN = process.env.NODE_ENV === 'production' ? '.jxdd.com' : '';
+var STATIC_DOMAIN = exports.STATIC_DOMAIN = process.env.NODE_ENV === 'production' ? _propUtils2.default.getProperty('site.static.url') : 'http://localhost:8080/suppliers';
+
+var SSO_DOMAIN = exports.SSO_DOMAIN = 'https://api.jinxiudadi.com/account';
+
+var COMMONAPI = exports.COMMONAPI = 'https://api.jinxiudadi.com';
+
+var MARKETAPI = exports.MARKETAPI = 'https://api.jinxiudadi.com';
+
+var MEMBERAPI = exports.MEMBERAPI = 'https://api.jinxiudadi.com';
+
+var ORDERAPI = exports.ORDERAPI = 'https://api.jinxiudadi.com';
+
+var PRODUCTAPI = exports.PRODUCTAPI = 'https://api.jinxiudadi.com';
+
+var STOREAPI = exports.STOREAPI = 'https://api.jinxiudadi.com';
+
+var PAYMENT = exports.PAYMENT = 'https://p.jinxiudadi.com';
+
+var IMCHAT = exports.IMCHAT = 'http://im.jinxiudadi.com:31001';
+var IMCHAT_HISTORY = exports.IMCHAT_HISTORY = 'http://im.jinxiudadi.com:31010';
+var IMCHAT_UPLOAD = exports.IMCHAT_UPLOAD = 'http://im.jinxiudadi.com/uploadfile';
+
+var IMGURL = exports.IMGURL = 'http://i0.jinxiudadi.com';

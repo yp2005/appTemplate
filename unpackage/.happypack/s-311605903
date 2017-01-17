@@ -1,0 +1,30 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _properties = require('./properties');
+
+var _properties2 = _interopRequireDefault(_properties);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var getProperty = function getProperty(k, area) {
+  area = area || 'jxddprops';
+  return _properties2.default[area][k];
+};
+
+var setProperty = function setProperty(k, v) {
+  _properties2.default.jxddprops[k] = v;
+};
+
+var getLogProp = function getLogProp(k) {
+  return _properties2.default.logprops[k];
+};
+
+exports.default = {
+  getProperty: getProperty,
+  setProperty: setProperty,
+  getLogProp: getLogProp
+};

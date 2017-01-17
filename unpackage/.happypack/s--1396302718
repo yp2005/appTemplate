@@ -1,0 +1,56 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var mycurrency = exports.mycurrency = function mycurrency(value, mark) {
+    value = value || 0;
+    var str = (value + '').split('.');
+    var array = [];
+    if (str.length === 1) {
+        array[0] = value;
+        array[1] = '00';
+    } else {
+        str.map(function (item, index) {
+            if (index === str.length - 1) {
+                item = item.length < 2 ? item + '0' : item.substring(0, 2);
+            }
+            array[index] = item;
+        });
+    }
+    return array[mark];
+};
+
+var mycurrency1 = exports.mycurrency1 = function mycurrency1(value) {
+    value = value || '0.00';
+    return parseFloat(value.toString()).toFixed(2);
+};
+
+var myvolumes = exports.myvolumes = function myvolumes(value) {
+    value = value || 0;
+    if (value > 10000) {
+        return parseInt(value / 10000) + '万';
+    } else {
+        return value;
+    }
+};
+
+var myvolumes100 = exports.myvolumes100 = function myvolumes100(value) {
+    value = value || 0;
+    if (value >= 1000000) {
+        return parseInt(value / 10000) + '万';
+    } else {
+        return value;
+    }
+};
+
+var mytelnum = exports.mytelnum = function mytelnum(value) {
+    if (!value) {
+        return '';
+    }
+    if (value.length === 11) {
+        return value.substr(0, 3) + '-' + value.substr(3, 4) + '-' + value.substr(7, 4);
+    } else {
+        return value;
+    }
+};

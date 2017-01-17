@@ -1,0 +1,157 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+
+var REGEX_RULE = {
+    email: /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+
+    url: /^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})).?)(?::\d{2,5})?(?:[/?#]\S*)?$/i,
+
+    dateISO: /^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/,
+
+    number: /^(?:-?\d+|-?\d{1,3}(?:,\d{3})+)?(?:\.\d+)?$/,
+
+    digits: /^\d+$/,
+
+    ip: /^(25[0-5]|2[0-4]\d|[01]?\d\d?)\.(25[0-5]|2[0-4]\d|[01]?\d\d?)\.(25[0-5]|2[0-4]\d|[01]?\d\d?)\.(25[0-5]|2[0-4]\d|[01]?\d\d?)$/i,
+
+    mobilephone: /^1[3|4|5|7|8][0-9]{9}$/,
+
+    telphone: /^d{3}-d{8}|d{4}-d{7}$/,
+
+    zhstr: /^[u4e00-u9fa5]$/,
+
+    spacestr: /^s*|s*$/,
+
+    accountstr: /^[a-zA-Z][a-zA-Z0-9_]{4,15}$/,
+
+    postcard: /(^[1-9]\d{5}$)|0{6}/,
+
+    identitycode: /^\d{6}(18|19|20)?\d{2}(0[1-9]|1[12])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)$/i,
+
+    time: /^([01]\d|2[0-3]|[0-9])(:[0-5]\d){1,2}$/,
+
+    time12h: /^((0?[1-9]|1[012])(:[0-5]\d){1,2}(\?[AP]M))$/i,
+
+    username: /^[a-z0-9_\-\u4e00-\u9fa5]{3,15}$/i,
+
+    passwd: /^[\x21-\x7E]{8,20}$/i,
+
+    zhennumstr: /^[\u4e00-\u9fa5_a-zA-Z0-9]+$/,
+
+    zhennumstr1: /^[\u4e00-\u9fa5_a-zA-Z]+$/
+};
+
+var email = function email(text) {
+    return REGEX_RULE.email.test(text);
+};
+
+var url = function url(text) {
+    return REGEX_RULE.url.test(text);
+};
+
+var dateISO = function dateISO(text) {
+    return REGEX_RULE.dateISO.test(text);
+};
+
+var number = function number(text) {
+    return REGEX_RULE.number.test(text);
+};
+
+var digits = function digits(text) {
+    return REGEX_RULE.digits.test(text);
+};
+
+var ip = function ip(text) {
+    return REGEX_RULE.ip.test(text);
+};
+
+var mobilephone = function mobilephone(text) {
+    return REGEX_RULE.mobilephone.test(text);
+};
+
+var telphone = function telphone(text) {
+    return REGEX_RULE.telphone.test(text);
+};
+
+var zhstr = function zhstr(text) {
+    return REGEX_RULE.zhstr.test(text);
+};
+
+var spacestr = function spacestr(text) {
+    return REGEX_RULE.spacestr.test(text);
+};
+
+var accountstr = function accountstr(text) {
+    return REGEX_RULE.accountstr.test(text);
+};
+
+var postcard = function postcard(text) {
+    return REGEX_RULE.postcard.test(text);
+};
+
+var identitycode = function identitycode(text) {
+    return REGEX_RULE.identitycode.test(text);
+};
+
+var time = function time(text) {
+    return REGEX_RULE.time.test(text);
+};
+
+var time12h = function time12h(text) {
+    return REGEX_RULE.time12h.test(text);
+};
+
+var datestr = function datestr(text) {
+    return !/Invalid|NaN/.test(new Date(text).toString());
+};
+
+var passwd = function passwd(text) {
+    return REGEX_RULE.passwd.test(text);
+};
+var username = function username(text) {
+    return REGEX_RULE.username.test(text);
+};
+
+var isEmpty = function isEmpty(text) {
+    if (text == null || text === '' || text.trim() === '') {
+        return true;
+    }
+    return false;
+};
+
+var zhennumStr = function zhennumStr(text) {
+    return REGEX_RULE.zhennumstr.test(text);
+};
+
+var zhennumStr1 = function zhennumStr1(text) {
+    return REGEX_RULE.zhennumstr1.test(text);
+};
+
+exports.default = {
+    REGEX_RULE: REGEX_RULE,
+    email: email,
+    url: url,
+    dateISO: dateISO,
+    number: number,
+    digits: digits,
+    ip: ip,
+    mobilephone: mobilephone,
+    telphone: telphone,
+    zhstr: zhstr,
+    spacestr: spacestr,
+    accountstr: accountstr,
+    postcard: postcard,
+    identitycode: identitycode,
+    time: time,
+    time12h: time12h,
+    datestr: datestr,
+    username: username,
+    passwd: passwd,
+    isEmpty: isEmpty,
+    zhennumStr: zhennumStr,
+    zhennumStr1: zhennumStr1
+};

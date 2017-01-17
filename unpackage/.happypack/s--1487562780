@@ -1,0 +1,107 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _dateFormat = require('./dateFormat');
+
+var _dateFormat2 = _interopRequireDefault(_dateFormat);
+
+var _propUtils = require('./propUtils');
+
+var _propUtils2 = _interopRequireDefault(_propUtils);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var logLevel = 0;
+var logonoff = 0;
+var writeonoff = 0;
+var writeurl = 'http://192.168.2.61:8888/api/facade/log/write';
+function doLog(sMethod, aArgs) {
+    if (logonoff === 1) {
+        return;
+    }
+    console.log(aArgs);
+
+    if (writeonoff === 0) {
+        var imei = plus.device.imei;
+        var imsi = plus.device.imsi;
+        var model = plus.device.model;
+        var vendor = plus.device.vendor;
+        var uuid = plus.device.uuid;
+        mui.ajax(writeurl, {
+            data: {
+                imei: imei,
+                imsi: imsi,
+                model: model,
+                vendor: vendor,
+                uuid: uuid,
+                loginfo: aArgs.toString()
+            },
+            type: 'post',
+            success: function success() {},
+            error: function error(xhr, type, errorThrown) {
+                console.log('server write log error');
+            },
+            inspect: function inspect() {},
+            complete: function complete() {}
+        });
+    }
+}
+
+var Logger = function Logger(sModule) {
+    logonoff = _propUtils2.default.getLogProp('logonoff');
+    logLevel = _propUtils2.default.getLogProp('loglevel');
+    var _name = sModule;
+    var methods = ['log', 'debug', 'info', 'error', 'warn'];
+    for (var i = 0, len = methods.length; i < len; i++) {
+        (function (method) {
+            Logger.prototype[method] = function () {
+                var sDate = '[' + _dateFormat2.default.dateFormat(new Date()) + ']';
+                var aArgs = Array.prototype.slice.call(arguments, 0);
+                aArgs.unshift(sDate);
+                aArgs.push('(' + method + ' ' + _name + ')');
+                doLog(method, aArgs);
+            };
+        })(methods[i]);
+    }
+};
+
+var log = function log(_log, moduleName) {
+    if (logLevel >= 0) {
+        new Logger(moduleName).log(_log);
+    }
+};
+
+var debug = function debug(log, moduleName) {
+    if (logLevel >= 1) {
+        new Logger(moduleName).debug(log);
+    }
+};
+
+var info = function info(log, moduleName) {
+    if (logLevel >= 2) {
+        new Logger(moduleName).info(log);
+    }
+};
+
+var error = function error(log, moduleName) {
+    if (logLevel >= 3) {
+        new Logger(moduleName).error(log);
+    }
+};
+
+var warn = function warn(log, moduleName) {
+    if (logLevel >= 4) {
+        new Logger(moduleName).warn(log);
+    }
+};
+
+exports.default = {
+    log: log,
+    debug: debug,
+    info: info,
+    error: error,
+    warn: warn
+};

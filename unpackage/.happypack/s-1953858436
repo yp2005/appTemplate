@@ -1,0 +1,179 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _keys = require('babel-runtime/core-js/object/keys');
+
+var _keys2 = _interopRequireDefault(_keys);
+
+var _typeof2 = require('babel-runtime/helpers/typeof');
+
+var _typeof3 = _interopRequireDefault(_typeof2);
+
+var _mui = require('static/js/mui.pullToRefresh');
+
+var _mui2 = _interopRequireDefault(_mui);
+
+var _consts = require('common/consts');
+
+var _cacheUtils = require('common/cacheUtils');
+
+var _cacheUtils2 = _interopRequireDefault(_cacheUtils);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var scroll = function scroll(self) {
+    mui('#homepage').scroll({
+        bounce: true,
+        indicators: false,
+        deceleration: mui.os.ios ? 0.003 : 0.0009
+    });
+    mui('#mui-scroll-activity').scroll({
+        bounce: true,
+        indicators: false,
+        deceleration: mui.os.ios ? 0.003 : 0.0009
+    });
+    self.pullrefresh = mui('#homeScroll').pullToRefresh({
+        down: {
+            offset: 50,
+            height: 70,
+            callback: function callback() {
+                self.getHomePageData();
+            }
+        },
+        up: {
+            offset: 50,
+            callback: function callback() {
+                self.loadGuess();
+            }
+        }
+    });
+};
+
+var preload = function preload() {
+    mui.preload({
+        url: '../../commonpage/buyinghall/index.html',
+        id: 'buyer_commonpage_buyinghall_index.html',
+        styles: {
+            popGesture: 'close'
+        },
+        show: {
+            autoShow: true,
+            aniShow: 'pop-in',
+            duration: 300
+        },
+        waiting: {
+            autoShow: false }
+    });
+    mui.preload({
+        url: '../../buyer/supplier/index.html',
+        id: 'buyer_supplier_index.html',
+        styles: {
+            popGesture: 'close'
+        },
+        show: {
+            autoShow: true,
+            aniShow: 'pop-in',
+            duration: 300
+        },
+        waiting: {
+            autoShow: false }
+    });
+    if (_consts.IMCHAT_SWITCH) {
+        mui.preload({
+            url: '../../seller/imchat/index.html',
+            id: 'seller_imchat',
+            styles: {
+                popGesture: 'close'
+            },
+            show: {
+                autoShow: true,
+                aniShow: 'pop-in',
+                duration: 300
+            },
+            waiting: {
+                autoShow: false }
+        });
+    }
+};
+
+var getLocalPath4Img = function getLocalPath4Img(url, dataName) {
+    if (!isImageUrl(url)) {
+        return undefined;
+    }
+    var data = _cacheUtils2.default.localStorage(_consts.HOME_INDEX).getObject(dataName) || [];
+    return (data.filter(function (item) {
+        return (item[getItemImgUrl(dataName)] || '').split('/').pop() === dataName + '_' + url.split('/').pop();
+    })[0] || {})[getItemImgUrl(dataName)];
+};
+
+var itemEq = function itemEq(localItem, netItem, dataName) {
+    if (localItem === undefined) {
+        return false;
+    }
+    var result = true;
+    var l = JSON.parse(localItem);
+    if ((typeof l === 'undefined' ? 'undefined' : (0, _typeof3.default)(l)) !== 'object') {
+        return false;
+    }
+    var n = JSON.parse(netItem);
+    var item = (l[getItemImgUrl(dataName)] || '').split('/').pop() || '';
+    if (!(l[getItemImgUrl(dataName)] || '')) {
+        return false;
+    }
+
+    if (item.replace('_' + item.split('_').pop(), '') === dataName + '_' + (n[getItemImgUrl(dataName)] || '').split('/').pop()) {
+        delete l[getItemImgUrl(dataName)];
+        delete n[getItemImgUrl(dataName)];
+
+        (0, _keys2.default)(l).map(function (k) {
+            if (l[k] !== n[k]) {
+                result = false;
+            }
+        });
+    } else {
+        result = false;
+    }
+
+    return result;
+};
+
+var isImageUrl = function isImageUrl(imgUrl) {
+    var reg = /\.(png|jpe?g|gif|svg)(\?.*)?$/;
+    return !(imgUrl === undefined || imgUrl == null || imgUrl.indexOf('/') === -1 || !reg.test(imgUrl));
+};
+
+var getItemImgUrl = function getItemImgUrl(dataName) {
+    var itemImgUrl = 'image_url';
+    switch (dataName) {
+        case 'activityDatas':
+            itemImgUrl = 'column_img_url';
+            break;
+        case 'imageDatas':
+            itemImgUrl = 'banner_img_url';
+            break;
+        case 'customizationDatas':
+            itemImgUrl = 'gc_id_1_url';
+            break;
+        case 'brandsDatas':
+            itemImgUrl = 'brand_url';
+            break;
+        case 'guessDatas':
+            itemImgUrl = 'image_url';
+            break;
+        default:
+            itemImgUrl = 'image_url';
+    }
+    return itemImgUrl;
+};
+
+exports.default = {
+    scroll: scroll,
+    preload: preload,
+    getLocalPath4Img: getLocalPath4Img,
+    getItemImgUrl: getItemImgUrl,
+    isImageUrl: isImageUrl,
+    itemEq: itemEq
+};
